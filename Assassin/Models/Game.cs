@@ -12,6 +12,5 @@ namespace Assassin.Models
     public string password { get; set; }
     public bool start { get; set; }
     public bool end { get; set; }
-    public int[] playerIdArray { get; set; }
   }
 }

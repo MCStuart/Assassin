@@ -1,6 +1,7 @@
 using Microsoft.EntityFrameworkCore;
 using System.Collections.Generic;
 using System.Linq;
+using System;
 
 namespace Assassin.Models
 {
@@ -15,8 +16,8 @@ namespace Assassin.Models
     public string email { get; set; }
     public string code_name { get; set; }
     public int game_id { get; set; }
-    public int[] score { get; set; }
+    public int spoon_score { get; set; }
+    public int sock_score { get; set; }
     public string phone_number { get; set; }
-
   }
 }
