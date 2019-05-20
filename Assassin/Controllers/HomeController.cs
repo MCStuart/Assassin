@@ -10,20 +10,49 @@ namespace Assassin.Controllers
 {
     public class HomeController : Controller
     {
+        [HttpGet("/")]
         public IActionResult Index()
         {
             return View();
         }
 
-        public IActionResult Privacy()
+        [HttpGet("/rules")]
+        public IActionResult Rules()
         {
             return View();
         }
 
-        [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
-        public IActionResult Error()
+        [HttpGet("/login")]
+        public IActionResult Login()
         {
-            return View(new ErrorViewModel { RequestId = Activity.Current?.Id ?? HttpContext.TraceIdentifier });
+            return View();
         }
+
+        // [HttpPost("/authenticate")]
+        // public IActionResult Authenticate(string userName, string uPassword)
+        // {
+        //     var db = new AssassinContext();
+        //     Player thisPlayer = db.players.Where(p => p.email == userName && p.password == uPassword).FirstOrDefault();
+        //     if ()
+        //     {
+        //       return RedirectToAction("Index", "Players", new {gameId = thisPlayer.game_id, id = thisPlayer.id});
+        //     }
+        //     else
+        //     {
+        //       return RedirectToAction("TryAgain");
+        //     }
+        // }
+        //
+        // [HttpGet("/try-again")]
+        // public IActionResult TryAgain()
+        // {
+        //     return View();
+        // }
+        //
+        // [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
+        // public IActionResult Error()
+        // {
+        //     return View(new ErrorViewModel { RequestId = Activity.Current?.Id ?? HttpContext.TraceIdentifier });
+        // }
     }
 }

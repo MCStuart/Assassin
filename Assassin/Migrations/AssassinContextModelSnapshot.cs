@@ -49,6 +49,8 @@ namespace Assassin.Migrations
 
                     b.Property<string>("password");
 
+                    b.Property<int>("player_count");
+
                     b.Property<bool>("start");
 
                     b.Property<string>("team_name");

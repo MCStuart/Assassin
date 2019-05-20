@@ -12,6 +12,7 @@ namespace Assassin.Models
     public string password { get; set; }
     public int start { get; set; }
     public int end { get; set; }
+    public int player_count { get; set; 
 
     public void BeginGame(int gameId)
     {
