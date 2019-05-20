@@ -35,7 +35,8 @@ namespace Assassin.Migrations
                     team_name = table.Column<string>(nullable: true),
                     password = table.Column<string>(nullable: true),
                     start = table.Column<short>(nullable: false),
-                    end = table.Column<short>(nullable: false)
+                    end = table.Column<short>(nullable: false),
+                    player_count = table.Column<int>(nullable: false)
                 },
                 constraints: table =>
                 {

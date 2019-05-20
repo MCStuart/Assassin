@@ -9,7 +9,7 @@ namespace Assassin.Models
   public class Player
   {
     public int id { get; set; }
-    public bool alive { get; set; }
+    public int alive { get; set; }
     public int assassin_id { get; set; }
     public string name { get; set; }
     public string password { get; set; }

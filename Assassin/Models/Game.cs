@@ -10,9 +10,9 @@ namespace Assassin.Models
     public int id { get; set; }
     public string team_name { get; set; }
     public string password { get; set; }
-    public bool start { get; set; }
-    public bool end { get; set; }
+    public int start { get; set; }
+    public int end { get; set; }
+    public int player_count { get; set; }
+
   }
 }
-
- 
