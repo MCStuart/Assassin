@@ -14,8 +14,9 @@ namespace Assassin.Models
     public int target_id { get; set; }
     public DateTime contract_start { get; set; }
     public DateTime contract_end { get; set; }
-    public bool fulfillment { get; set; }
+    public int fulfillment { get; set; }
     public string weapon { get; set; }
+
 
   }
 }
