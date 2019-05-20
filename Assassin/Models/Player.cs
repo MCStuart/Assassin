@@ -19,5 +19,39 @@ namespace Assassin.Models
     public int spoon_score { get; set; }
     public int sock_score { get; set; }
     public string phone_number { get; set; }
+
+    // public List<string> obit_mad_lib {}
+
+    public static List<Player> GetAll()
+    {
+      return new AssassinContext().players.ToList();
+    }
+
+    public void AssignAssassinId()
+    {
+      int playerCount = Player.GetAll().Count;
+      Random random = new Random();
+      foreach(Player player in Player.GetAll())
+      {
+        while (player.assassin_id = null)
+        {
+          int randomNumber = random.Next(1, playerCount + 1);
+          int count = 0;
+          foreach(Player checkPlayer in Player.GetAll())
+          {
+            if(randomNumber == checkPlayer.assassin_id)
+            {
+              count++;
+            }
+          }
+          if(count == 0)
+          {
+            player.assassin_id = randomNumber;
+          }
+        }
+
+      }
+    }
+
   }
 }
