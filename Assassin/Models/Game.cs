@@ -12,7 +12,18 @@ namespace Assassin.Models
     public string password { get; set; }
     public bool start { get; set; }
     public bool end { get; set; }
+
+    public void BeginGame(int gameId)
+    {
+      var db = new AssassinContext();
+      Player.AssignAssassinId();
+      foreach (Player player in Player.GetAll())
+      {
+        Contract firstContract = new Contract {game_id = gameId, assassin_id = player.assassin_id, target_id = (player.assassin_id + 1), contract_start = DateTime.now, fullfillment = false};
+        db.contracts.Add(firstContract);
+      }
+      db.SaveChanges();
+    }
+
   }
 }
-
- 

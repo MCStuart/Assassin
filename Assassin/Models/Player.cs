@@ -31,6 +31,7 @@ namespace Assassin.Models
     {
       int playerCount = Player.GetAll().Count;
       Random random = new Random();
+      var db = new AssassinContext();
       foreach(Player player in Player.GetAll())
       {
         while (player.assassin_id = null)
@@ -49,8 +50,8 @@ namespace Assassin.Models
             player.assassin_id = randomNumber;
           }
         }
-
       }
+      db.SaveChanges();
     }
 
   }

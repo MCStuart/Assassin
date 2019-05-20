@@ -17,5 +17,6 @@ namespace Assassin.Models
     public bool fulfillment { get; set; }
     public string weapon { get; set; }
 
+
   }
 }
