@@ -26,7 +26,7 @@ namespace Assassin.Controllers
           var player = new Player {name = name, password = password, email = email, code_name = agentName, game_id = game.id, phone_number = phoneNumber};
           db.players.Add(player);
           db.SaveChanges();
-          return RedirectToAction("Consent", "Players", new {id = player.id});
+          return RedirectToAction("Consent", "Players", new {gameId = game.id, id = player.id});
         }
 
     }
