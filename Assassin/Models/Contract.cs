@@ -52,6 +52,7 @@ namespace Assassin.Models
     public void KillTarget(int contractId)
     {
       var db = new AssassinContext();
+
       var completedContract = db.contracts.Find(contractId);
       int newAssassin = completedContract.assassin_id;
       int newGameId = completedContract.game_id;
@@ -59,10 +60,12 @@ namespace Assassin.Models
       int newTarget = deadContract.target_id;
       var nowDeadPlayer = db.players.Where( p => p.assassin_id == completedContract.target_id).FirstOrDefault();
       nowDeadPlayer.is_alive = 0;
-      if (IsGameOver(newGameId, newAssassin, newTarget) != 1) {
+      if (IsGameOver(newGameId, newAssassin, newTarget) != 1) 
+      {
         Contract newContract = new Contract {game_id = newGameId, assassin_id = newAssassin, target_id = newTarget, contract_start = DateTime.Now, is_fulfilled = 0};
         db.contracts.Add(newContract);
       }
+
       db.SaveChanges();
     }
 
