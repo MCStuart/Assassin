@@ -39,6 +39,7 @@ namespace Assassin.Controllers
       {
         var db = new AssassinContext();
         var player = new Player {name = name, password = password, email = email, code_name = agentName, game_id = gameId, phone_number = phoneNumber};
+        var foundGame = db.games.Find(gameId);
         db.players.Add(player);
         db.SaveChanges();
         return RedirectToAction("Consent", new {gameId = player.game_id, id = player.id});
@@ -62,6 +63,17 @@ namespace Assassin.Controllers
           Player thisPlayer = db.players.Find(id);
           Dictionary<string, object> model = new Dictionary<string,object>{{"game", thisGame}, {"player", thisPlayer}};
           return View(model);
+      }
+
+      [HttpPost("/game/{gameId}/player/{id}/start-game")]
+      public IActionResult StartGame(int gameId, int id)
+      {
+          var db = new AssassinContext();
+          Game thisGame = db.games.Find(gameId);
+          thisGame.BeginGame();
+          // Player thisPlayer = db.players.Find(id);
+          // Dictionary<string, object> model = new Dictionary<string,object>{{"game", thisGame}, {"player", thisPlayer}};
+          return RedirectToAction("Index");
       }
 
     }
