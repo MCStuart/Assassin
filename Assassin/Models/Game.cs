@@ -33,5 +33,19 @@ namespace Assassin.Models
       db.SaveChanges();
     }
 
+    // End of Game Statistic Methods
+    public void FirstDead(int gameId)
+    {
+      var db = new AssassinContext();
+      if (db.games.id = gameId && db.games.is_end = 1)
+      {
+        var firstCompletedContract = db.contracts.Where(c => contract_end.HasValue).Min(c => c.contract_end);
+        var firstTarget = firstCompletedContract.target_id;
+        var firstDead = db.players.name.Where(assassin_id == firstTarget);
+        return firstDead;
+      }
+    }
+
+    
   }
 }
