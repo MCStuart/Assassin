@@ -36,28 +36,6 @@ namespace Assassin.Models
       db.SaveChanges();
     }
 
-    public void KillTarget(int contractId)
-    {
-      var db = new AssassinContext();
-
-      var completedContract = db.contracts.Find(contractId);
-      int newAssassin = completedContract.assassin_id;
-      int newGameId = completedContract.game_id;
-
-      Contract deadContract = db.contracts.Where( c => c.assassin_id == completedContract.target_id && c.is_fulfilled == 0);
-      int newTarget = deadContract.target_id;
-
-      var nowDeadPlayer = db.players.Where( p => p.assassin_id == completedContract.target_id).FirstOrDefault();
-      nowDeadPlayer.is_alive = 0;
-
-      if (isGameOver(newGameId, newAssassin, newTarget) != 1) {
-        Contract newContract = new Contract {game_id = newGameId, assassin_id = newAssassin, target_id = newTarget, contract_start = DateTime.Now, is_fulfilled = 0};
-        db.contracts.Add(newContract);
-      }
-
-      db.SaveChanges();
-    }
-
     public static int IsGameOver(int gameId, int assassinId, int targetId)
     {
       var db = new AssassinContext();
@@ -65,10 +43,38 @@ namespace Assassin.Models
       if (assassinId == targetId)
       {
         selectedGame.is_end = 1;
-        selecteGame.is_start = 0;
+        selectedGame.is_start = 0;
       }
       db.SaveChanges();
       return selectedGame.is_end;
+    }
+
+    public void KillTarget(int contractId)
+    {
+      var db = new AssassinContext();
+
+      var completedContract = db.contracts.Find(contractId);
+      int newAssassin = completedContract.assassin_id;
+      int newGameId = completedContract.game_id;
+      Contract deadContract = db.contracts.Where( c => c.assassin_id == completedContract.target_id && c.is_fulfilled == 0).FirstOrDefault();
+      int newTarget = deadContract.target_id;
+      var nowDeadPlayer = db.players.Where( p => p.assassin_id == completedContract.target_id).FirstOrDefault();
+      nowDeadPlayer.is_alive = 0;
+      if (IsGameOver(newGameId, newAssassin, newTarget) != 1)
+      {
+        Contract newContract = new Contract {game_id = newGameId, assassin_id = newAssassin, target_id = newTarget, contract_start = DateTime.Now, is_fulfilled = 0};
+        db.contracts.Add(newContract);
+      }
+
+      db.SaveChanges();
+    }
+
+    public string TargetPlayerInfo(int gameId)
+    {
+      var db = new AssassinContext();
+      Player targetPlayer = db.players.Where( p => p.assassin_id == this.target_id && p.game_id == gameId).FirstOrDefault();
+      string targetPlayerName = targetPlayer.name;
+      return targetPlayerName;
     }
   }
 }
