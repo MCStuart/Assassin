@@ -45,15 +45,23 @@ namespace Assassin.Controllers
       }
 
       [HttpGet("/game/{gameId}/player/{id}/consent")]
-      public IActionResult Consent()
+      public IActionResult Consent(int gameId, int id)
       {
-          return View();
+          var db = new AssassinContext();
+          Game thisGame = db.games.Find(gameId);
+          Player thisPlayer = db.players.Find(id);
+          Dictionary<string, object> model = new Dictionary<string, object>{{"game", thisGame}, {"player", thisPlayer}};
+          return View(model);
       }
 
       [HttpGet("/game/{gameId}/player/{id}")]
-      public IActionResult Index()
+      public IActionResult Index(int gameId, int id)
       {
-          return View();
+          var db = new AssassinContext();
+          Game thisGame = db.games.Find(gameId);
+          Player thisPlayer = db.players.Find(id);
+          Dictionary<string, object> model = new Dictionary<string,object>{{"game", thisGame}, {"player", thisPlayer}};
+          return View(model);
       }
 
     }
