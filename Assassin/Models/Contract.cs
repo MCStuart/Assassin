@@ -51,13 +51,14 @@ namespace Assassin.Models
       db.SaveChanges();
     }
 
-    public int static isGameOver(int gameId, int assassinId, int targetId)
+    public int static IsGameOver(int gameId, int assassinId, int targetId)
     {
       var db = new AssassinContext();
       var selectedGame = db.games.Find(gameId);
       if (assassinId == targetId)
       {
         selectedGame.is_end = 1;
+        selecteGame.is_start = 0;
       }
       db.SaveChanges();
       return selectedGame.is_end;
