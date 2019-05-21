@@ -9,7 +9,7 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace Assassin.Migrations
 {
     [DbContext(typeof(AssassinContext))]
-    [Migration("20190521162226_InitialCreate")]
+    [Migration("20190521180148_InitialCreate")]
     partial class InitialCreate
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
