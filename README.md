@@ -36,7 +36,7 @@ _To make your own database in MySql shell:_
 * _Finally, put the url <http://localhost:5000> into your web browser and the program will open._
 
 
-## Specs - "Landing Page" - Index.html
+## Specs - "Landing Page" - Index.cshtml
 
 <p  align="center">
   <img src="~/img/homePage.png" alt="image of homepage" height="80%" width="80%">
@@ -46,7 +46,7 @@ _To make your own database in MySql shell:_
 | ------------- |:-------------:| -----:|
 
 
-## Specs - "Rules" - Rules.html
+## Specs - "Rules" - Rules.cshtml
 
 <p  align="center">
   <img src="~/img/aboutFAQpage.png" height="80%" width="80%">
@@ -56,18 +56,7 @@ _To make your own database in MySql shell:_
 | Behavior | Input | Output |
 | ------------- |:-------------:| -----:|
 
-
-## Specs - "Resources" - resources.html
-
-<p  align="center">
-  <img src="~/img/resourcesPage.png" height="80%" width="80%">
-</p>
-
-| Behavior | Input | Output |
-| ------------- |:-------------:| -----:|
-
-
-## Specs - "Search by location" - searchByLocation.html
+## Specs - "New Game" - Games/New.cshtml
 
 <p  align="center">
   <img src="~/img/mapPage.png" height="80%" width="80%">
@@ -76,11 +65,19 @@ _To make your own database in MySql shell:_
 | Behavior | Input | Output |
 | ------------- |:-------------:| -----:|
 
-
-## Specs - "Search by Date" - calendar.html
+## Specs - "Sign Up" - Players/New.cshtml
 
 <p  align="center">
-  <img src="~/img/calendarPage.png" height="80%" width="80%">
+  <img src="~/img/resourcesPage.png" height="80%" width="80%">
+</p>
+
+| Behavior | Input | Output |
+| ------------- |:-------------:| -----:|
+
+## Specs - "Login" - Login.cshtml
+
+<p  align="center">
+  <img src="~/img/resourcesPage.png" height="80%" width="80%">
 </p>
 
 | Behavior | Input | Output |

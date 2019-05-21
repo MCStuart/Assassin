@@ -13,8 +13,6 @@
     <form action="/game/@Model["game"].id/player/@Model["player"].id/start-game" method="post">
       <button type="submit">Start Game</button>
     </form>
-@Player.GetAll(1).Count
-
 }
 
 @if (@Model["player"].is_admin == 0 && @Model["game"].is_start == 0)
@@ -24,19 +22,14 @@
   <h1>You are a part of @Model["game"].team_name</h1>
 
   <h1>Waiting for everyone to join the game and the admin to click start.</h1>
-  /* <ul>
-    @foreach (Player player in @Player.GetAll(1))
-    {
-      <li>@player.name</li>
-    }
-  </ul> */
-  @Player.GetAll(1).Count
-
 }
 
 @if (@Model["game"].is_start == 1)
 {
   <h1>Game is in progress. This is the main game play area</h1>
-  @Player.GetAll(1).Count
+}
 
+@if (@Model["game"].is_end == 1 && @Model["game"].is_start == 0)
+{
+  <h1>Game is Over</h1>
 }
