@@ -4,5 +4,14 @@ body {
 }
 
 #title {
-  font-size: 50px;
+  font-size: 100px;
+}
+
+.stats {
+  background-color: darkgrey;
+  color: black;
+}
+
+.card-body {
+  background-color: darkgrey;
 }
