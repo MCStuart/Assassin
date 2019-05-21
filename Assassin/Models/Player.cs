@@ -33,16 +33,18 @@ namespace Assassin.Models
 
     public static void AssignAssassinId(int gameId)
     {
-      int playerCount = Player.GetAll(gameId).Count;
+      // int playerCount = Player.GetAll(gameId).Count;
       Random random = new Random();
       var db = new AssassinContext();
-      foreach(Player player in Player.GetAll(gameId))
+      List<Player> playerList = db.players.Where(p => p.game_id == gameId).ToList();
+      int playerCount = playerList.Count;
+      foreach(Player player in playerList)
       {
-        while (player.assassin_id == null)
+        while (player.assassin_id == 0)
         {
-          int randomNumber = random.Next(1, playerCount + 1);
+          int randomNumber = random.Next(1, playerCount+1);
           int count = 0;
-          foreach(Player checkPlayer in Player.GetAll(gameId))
+          foreach(Player checkPlayer in playerList)
           {
             if(randomNumber == checkPlayer.assassin_id)
             {
@@ -55,6 +57,7 @@ namespace Assassin.Models
           }
         }
       }
+
       db.SaveChanges();
     }
 

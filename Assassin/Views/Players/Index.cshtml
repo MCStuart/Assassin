@@ -1,3 +1,5 @@
+@using Assassin.Models
+
 @{
     ViewData["Title"] = "Player";
 }
@@ -8,7 +10,7 @@
     <h1>Ready to being the game....?</h1>
     <h1>Is everyone signed up....?</h1>
     <h1>Does everyone understand the rules....?</h1>
-    <form action="game/@Model["game"].id/player/@Model["player"].id/start-game" method="post">
+    <form action="/game/@Model["game"].id/player/@Model["player"].id/start-game" method="post">
       <button type="submit">Start Game</button>
     </form>
 }
@@ -25,4 +27,9 @@
 @if (@Model["game"].is_start == 1)
 {
   <h1>Game is in progress. This is the main game play area</h1>
+}
+
+@if (@Model["game"].is_end == 1 && @Model["game"].is_start == 0)
+{
+  <h1>Game is Over</h1>
 }

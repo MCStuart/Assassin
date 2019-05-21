@@ -19,10 +19,14 @@ namespace Assassin.Models
       var db = new AssassinContext();
       Game thisGame = db.games.Find(this.id);
       thisGame.is_start = 1;
-      Player.AssignAssassinId(thisGame.id);
-      foreach (Player player in Player.GetAll(thisGame.id))
+      List<Player> playerList = Player.GetAll(thisGame.id);
+      foreach (Player player in playerList)
       {
         Contract firstContract = new Contract {game_id = thisGame.id, assassin_id = player.assassin_id, target_id = (player.assassin_id + 1), contract_start = DateTime.Now, is_fulfilled = 0};
+        if (firstContract.target_id > playerList.Count)
+        {
+          firstContract.target_id = 1;
+        }
         db.contracts.Add(firstContract);
       }
       db.SaveChanges();

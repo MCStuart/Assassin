@@ -23,7 +23,7 @@ namespace Assassin.Controllers
           var game = new Game {team_name = gameName, password = gamePassword, is_start = 0, is_end = 0};
           db.games.Add(game);
           db.SaveChanges();
-          var player = new Player {name = name, password = password, email = email, code_name = agentName, game_id = game.id, phone_number = phoneNumber, is_admin = 1};
+          var player = new Player {is_alive = 1, name = name, password = password, email = email, code_name = agentName, game_id = game.id, phone_number = phoneNumber, is_admin = 1};
           db.players.Add(player);
           db.SaveChanges();
           return RedirectToAction("Consent", "Players", new {gameId = game.id, id = player.id});
