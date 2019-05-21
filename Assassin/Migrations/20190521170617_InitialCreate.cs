@@ -18,7 +18,7 @@ namespace Assassin.Migrations
                     target_id = table.Column<int>(nullable: false),
                     contract_start = table.Column<DateTime>(nullable: false),
                     contract_end = table.Column<DateTime>(nullable: false),
-                    fulfillment = table.Column<short>(nullable: false),
+                    is_fulfilled = table.Column<int>(nullable: false),
                     weapon = table.Column<string>(nullable: true)
                 },
                 constraints: table =>
@@ -34,8 +34,8 @@ namespace Assassin.Migrations
                         .Annotation("MySQL:AutoIncrement", true),
                     team_name = table.Column<string>(nullable: true),
                     password = table.Column<string>(nullable: true),
-                    start = table.Column<short>(nullable: false),
-                    end = table.Column<short>(nullable: false)
+                    is_start = table.Column<int>(nullable: false),
+                    is_end = table.Column<int>(nullable: false)
                 },
                 constraints: table =>
                 {
@@ -48,7 +48,7 @@ namespace Assassin.Migrations
                 {
                     id = table.Column<int>(nullable: false)
                         .Annotation("MySQL:AutoIncrement", true),
-                    alive = table.Column<short>(nullable: false),
+                    is_alive = table.Column<int>(nullable: false),
                     assassin_id = table.Column<int>(nullable: false),
                     name = table.Column<string>(nullable: true),
                     password = table.Column<string>(nullable: true),
@@ -57,7 +57,9 @@ namespace Assassin.Migrations
                     game_id = table.Column<int>(nullable: false),
                     spoon_score = table.Column<int>(nullable: false),
                     sock_score = table.Column<int>(nullable: false),
-                    phone_number = table.Column<string>(nullable: true)
+                    phone_number = table.Column<string>(nullable: true),
+                    image_url = table.Column<string>(nullable: true),
+                    is_admin = table.Column<int>(nullable: false)
                 },
                 constraints: table =>
                 {

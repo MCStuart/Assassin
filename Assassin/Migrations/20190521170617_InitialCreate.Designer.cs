@@ -9,7 +9,7 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace Assassin.Migrations
 {
     [DbContext(typeof(AssassinContext))]
-    [Migration("20190520190100_InitialCreate")]
+    [Migration("20190521170617_InitialCreate")]
     partial class InitialCreate
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -29,9 +29,9 @@ namespace Assassin.Migrations
 
                     b.Property<DateTime>("contract_start");
 
-                    b.Property<bool>("fulfillment");
-
                     b.Property<int>("game_id");
+
+                    b.Property<int>("is_fulfilled");
 
                     b.Property<int>("target_id");
 
@@ -47,11 +47,11 @@ namespace Assassin.Migrations
                     b.Property<int>("id")
                         .ValueGeneratedOnAdd();
 
-                    b.Property<bool>("end");
+                    b.Property<int>("is_end");
+
+                    b.Property<int>("is_start");
 
                     b.Property<string>("password");
-
-                    b.Property<bool>("start");
 
                     b.Property<string>("team_name");
 
@@ -65,8 +65,6 @@ namespace Assassin.Migrations
                     b.Property<int>("id")
                         .ValueGeneratedOnAdd();
 
-                    b.Property<bool>("alive");
-
                     b.Property<int>("assassin_id");
 
                     b.Property<string>("code_name");
@@ -74,6 +72,12 @@ namespace Assassin.Migrations
                     b.Property<string>("email");
 
                     b.Property<int>("game_id");
+
+                    b.Property<string>("image_url");
+
+                    b.Property<int>("is_admin");
+
+                    b.Property<int>("is_alive");
 
                     b.Property<string>("name");
 

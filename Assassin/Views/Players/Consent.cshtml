@@ -1,0 +1,30 @@
+@{
+    ViewData["Title"] = "Consent";
+}
+
+<div class="text-center">
+    <h1 id="title" class="display-4">Assassin - Consent</h1><br>
+    <h2><strong>@Model["player"].code_name</strong>, please read through the rules. By selecting the check box and clicking submit, you agree to play by the rules.</h2><br><br>
+    <h3>
+      -
+      -
+      -
+      -
+      -
+      -
+      -
+      -
+      -
+      -
+      -
+      -
+      -
+      -
+      -
+      -
+      -
+      -
+    </h3>
+      <input type="checkbox" required>I agree to follow the rules of the game.</input><br>
+      <button type="submit" class=" btn btn-dark"><a href="/game/@Model["game"].id/player/@Model["player"].id">Submit</a></button>
+</div>

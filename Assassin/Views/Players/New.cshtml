@@ -1,0 +1,46 @@
+@{
+    ViewData["Title"] = "Sign Up";
+}
+
+@using Assassin.Models;
+<div class="text-center">
+  <h1 id="title" class="display-4">Assassin - Sign Up</h1>
+  @if (@Model == null)
+  {
+    <form action="/player/sign-up/authenticate" method="get" id="signUp">
+      <label for="gameName">The name of the game you are joining:</label>
+      <input name="gameName" type="text"></input>
+      <label for="gamePassword">The group password:</label>
+      <input name="gamePassword" type="password"></input>
+      <button type="submit" class="btn btn-dark">Submit</button>
+    </form>
+  }
+  else if (@Model.Count == 2)
+  {
+    <h2>@Model[0]. @Model[1]</h2>
+    <form action="/player/sign-up/authenticate" method="get" id="signUp">
+      <label for="gameName">The name of the game you are joining:</label>
+      <input name="gameName" type="text"></input>
+      <label for="gamePassword">The group password:</label>
+      <input name="gamePassword" type="password"></input>
+      <button type="submit" class="btn btn-dark">Submit</button>
+    </form>
+  }
+  else if (@Model.Count == 1)
+  {
+    <form action="/player/sign-up-success" method="post" id="signUp">
+      <label for="name">First name, last initial:</label>
+      <input name="name" type="text" value="ex: Dima E."></input>
+      <label for="email">email:</label>
+      <input name="email" type="text"></input>
+      <label for="password">Password:</label>
+      <input name="password" type="password"></input>
+      <label for="phoneNumber">Phone number:</label>
+      <input name="phoneNumber" type="text"></input>
+      <label for="agentName">Agent Name:</label>
+      <input name="agentName" type="text"></input>
+      <input name="gameId" type="hidden" value="@Model[0].id"></input>
+      <button type="submit" class="btn btn-dark">Submit</button>
+    </form>
+  }
+</div>
