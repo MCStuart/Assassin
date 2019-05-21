@@ -1,8 +1,14 @@
 body {
-  background-color: black;
+  background-image: url('https://i.pinimg.com/originals/65/61/40/656140c02525ba4ca0402e42e8c9f9c5.jpg');
+  background-position: center;
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+  background-size: cover;
   color: white;
+  font-family: 'Taviraj', serif;
 }
 
 #title {
   font-size: 50px;
+  font-family: 'Fontdiner Swanky', cursive;
 }

@@ -17,7 +17,7 @@ namespace Assassin.Models
     public int is_fulfilled { get; set; }
     public string weapon { get; set; }
 
-    public static CloseContract(int contractId, int playerId, string weapon)
+    public void CloseContract(int contractId, int playerId, string weapon)
     {
       var db = new AssassinContext();
       var selectedContract = db.contracts.Find(contractId);
@@ -36,7 +36,7 @@ namespace Assassin.Models
       db.SaveChanges();
     }
 
-    public static KillTarget(int contractId)
+    public void KillTarget(int contractId)
     {
       var db = new AssassinContext();
 
@@ -58,7 +58,7 @@ namespace Assassin.Models
       db.SaveChanges();
     }
 
-    public int static IsGameOver(int gameId, int assassinId, int targetId)
+    public static int IsGameOver(int gameId, int assassinId, int targetId)
     {
       var db = new AssassinContext();
       var selectedGame = db.games.Find(gameId);

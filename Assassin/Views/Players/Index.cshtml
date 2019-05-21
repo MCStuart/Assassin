@@ -3,6 +3,17 @@
 @{
     ViewData["Title"] = "Player";
 }
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset='utf-8'>
+    <title>Assassin</title>
+    <link rel='stylesheet' href='https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css'>
+    <link href="https://fonts.googleapis.com/css?family=Cantata+One|Fontdiner+Swanky|Limelight|Taviraj&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="~/css/styles.css">
+  </head>
+
+<body class="container">
 
 @if (@Model["player"].is_admin == 1 && @Model["game"].is_start == 0)
 {
@@ -33,3 +44,5 @@
 {
   <h1>Game is Over</h1>
 }
+</body>
+</html>
