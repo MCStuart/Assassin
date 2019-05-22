@@ -60,9 +60,10 @@ namespace Assassin.Controllers
       {
           var db = new AssassinContext();
           Game thisGame = db.games.Find(gameId);
+          List<Player> deathList = thisGame.DailyStats();
           Player thisPlayer = db.players.Find(id);
           Contract thisContract = db.contracts.Where(c => c.assassin_id == thisPlayer.assassin_id && c.is_fulfilled == 0 && thisPlayer.is_alive == 1 && c.game_id == thisGame.id).LastOrDefault();
-          Dictionary<string, object> model = new Dictionary<string,object>{{"game", thisGame}, {"player", thisPlayer}, {"contract", thisContract}};
+          Dictionary<string, object> model = new Dictionary<string,object>{{"game", thisGame}, {"player", thisPlayer}, {"contract", thisContract}, {"deathList", deathList}};
           return View(model);
       }
 
