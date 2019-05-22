@@ -49,6 +49,8 @@ namespace Assassin.Migrations
 
                     b.Property<int>("is_start");
 
+                    b.Property<int>("latest_kill_id");
+
                     b.Property<string>("password");
 
                     b.Property<string>("team_name");

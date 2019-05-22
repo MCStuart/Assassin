@@ -32,19 +32,57 @@ namespace Assassin.Models
       db.SaveChanges();
     }
 
-    // End of Game Statistic Methods
-    public void FirstDead(int gameId)
+    public Player LastAlive()
     {
       var db = new AssassinContext();
-      if (db.games.id = gameId && db.games.is_end = 1)
-      {
-        var firstCompletedContract = db.contracts.Where(c => contract_end.HasValue).Min(c => c.contract_end);
-        var firstTarget = firstCompletedContract.target_id;
-        var firstDead = db.players.name.Where(assassin_id == firstTarget);
-        return firstDead;
-      }
+      Player lastAlive = db.players.Where(p => p.is_alive == 1 && p.game_id == this.id).FirstOrDefault();
+      return lastAlive;
     }
 
-    
+    public Player FirstDead()
+    {
+      var db = new AssassinContext();
+      Contract firstCompletedContract = db.contracts.Where(c => c.contract_end != null && c.game_id == this.id).OrderBy(c => c.contract_end).First();
+      int firstTarget = firstCompletedContract.target_id;
+      Player firstDead = db.players.Where(p => p.assassin_id == firstTarget && p.game_id == this.id).FirstOrDefault();
+      return firstDead;
+    }
+
+    public Dictionary<string,object> MostKills()
+    {
+      var db = new AssassinContext();
+      Player mostKills = db.players.OrderByDescending(p => p.spoon_score + p.sock_score).First();
+      int total = mostKills.spoon_score + mostKills.sock_score;
+      Dictionary<string, object> thisDictionary = new Dictionary<string, object> {{"player", mostKills}, {"total", total}};
+      return thisDictionary;
+    }
+
+    public Player MostSpoonKills()
+    {
+      var db = new AssassinContext();
+      Player mostSpoonKills = db.players.OrderByDescending(p => p.spoon_score).First();
+      return mostSpoonKills;
+    }
+
+    public Player MostSockKills()
+    {
+      var db = new AssassinContext();
+      Player mostSockKills = db.players.OrderByDescending(p => p.sock_score).First();
+      return mostSockKills;
+    }
+
+    public List<Player> DailyStats()
+    {
+      var db = new AssassinContext();
+      DateTime today = DateTime.Today;
+      List<Contract> contractsToday = db.contracts.Where(c => c.is_fulfilled == 1 && c.contract_end.Date == today && c.game_id == this.id).ToList();
+      List<Player> playerDeathsToday = new List<Player> {};
+      foreach(Contract contract in contractsToday)
+      {
+        Player targetPlayer = db.players.Where( p => p.assassin_id == contract.target_id && p.game_id == this.id).FirstOrDefault();
+        playerDeathsToday.Add(targetPlayer);
+      }
+      return playerDeathsToday;
+    }
   }
 }

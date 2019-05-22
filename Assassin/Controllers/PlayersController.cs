@@ -60,8 +60,10 @@ namespace Assassin.Controllers
       {
           var db = new AssassinContext();
           Game thisGame = db.games.Find(gameId);
+          List<Player> deathList = thisGame.DailyStats();
           Player thisPlayer = db.players.Find(id);
-          Dictionary<string, object> model = new Dictionary<string,object>{{"game", thisGame}, {"player", thisPlayer}};
+          Contract thisContract = db.contracts.Where(c => c.assassin_id == thisPlayer.assassin_id && c.is_fulfilled == 0 && thisPlayer.is_alive == 1 && c.game_id == thisGame.id).LastOrDefault();
+          Dictionary<string, object> model = new Dictionary<string,object>{{"game", thisGame}, {"player", thisPlayer}, {"contract", thisContract}, {"deathList", deathList}};
           return View(model);
       }
 
@@ -75,6 +77,18 @@ namespace Assassin.Controllers
           // db.SaveChanges();
           Player thisPlayer = db.players.Find(id);
           // Dictionary<string, object> model = new Dictionary<string,object>{{"game", thisGame}, {"player", thisPlayer}};
+          return RedirectToAction("Index", new {gameId = thisGame.id, id = thisPlayer.id});
+      }
+
+      [HttpPost("/game/{gameId}/player/{id}/contract-complete")]
+      public IActionResult CompleteContract(int gameId, int id, string weapon)
+      {
+          var db = new AssassinContext();
+          Game thisGame = db.games.Find(gameId);
+          Player thisPlayer = db.players.Find(id);
+          Contract thisContract = db.contracts.Where(c => c.assassin_id == thisPlayer.assassin_id && c.is_fulfilled == 0 && thisPlayer.is_alive == 1).FirstOrDefault();
+          thisContract.CloseContract(thisContract.id, thisPlayer.id, weapon);
+          thisContract.KillTarget(thisContract.id);
           return RedirectToAction("Index", new {gameId = thisGame.id, id = thisPlayer.id});
       }
 
