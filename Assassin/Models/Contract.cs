@@ -17,6 +17,10 @@ namespace Assassin.Models
     public int is_fulfilled { get; set; }
     public string weapon { get; set; }
 
+    public int death_date_id {get; set;}
+
+
+
     public void CloseContract(int contractId, int playerId, string weapon)
     {
       var db = new AssassinContext();
@@ -24,6 +28,13 @@ namespace Assassin.Models
       selectedContract.weapon = weapon;
       selectedContract.contract_end = DateTime.Now;
       selectedContract.is_fulfilled = 1;
+
+      //
+      // DayStat newDaystat = new DayStat{ contract_id = selectedContract.id, assassin_id = selectedContract.assassin_id, target_id = selectedContract.target_id, date = selectedContract.contract_end};
+      // db.daily_statistics.Add(newDaystat);
+      //
+
+
       var selectedPlayer = db.players.Find(playerId);
       if (weapon == "sock")
       {
@@ -74,6 +85,20 @@ namespace Assassin.Models
       Player targetPlayer = db.players.Where( p => p.assassin_id == this.target_id && p.game_id == gameId).FirstOrDefault();
       string targetPlayerName = targetPlayer.name;
       return targetPlayerName;
+    }
+
+    public void SetDateId()
+    {
+      DateTime gameStart = db.contracts.Where(c => c.contract_start).First();
+      List<Contracts> listOfFulfilledContracts = db.contracts.Where(c => c.is_fulfilled = 1).OrderBy(c => c.end_contract).ToList();
+      foreach(Contract contract in listOfFulfilledContracts)
+      {
+        if (contract.contract_end == gameStart)
+        {
+          contract.death_date_id = 1;
+        }
+
+      }
     }
 
   }
