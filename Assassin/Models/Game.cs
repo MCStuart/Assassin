@@ -85,18 +85,18 @@ namespace Assassin.Models
       return playerDeathsToday;
     }
 
-    public Dictionary<string, object> GameReview()
-    {
-      var db = new AssassinContext();
-      
-      List<Contract> contractsToday = db.contracts.Where(c => c.is_fulfilled == 1 && c.contract_end.Date == today && c.game_id == this.id).ToList();
-      List<Player> playerDeathsToday = new List<Player> {};
-      foreach(Contract contract in contractsToday)
-      {
-        Player targetPlayer = db.players.Where( p => p.assassin_id == contract.target_id && p.game_id == this.id).FirstOrDefault();
-        playerDeathsToday.Add(targetPlayer);
-      }
-      return playerDeathsToday;
-    }
+    // public Dictionary<string, object> GameReview()
+    // {
+    //   var db = new AssassinContext();
+    //
+    //   List<Contract> contractsToday = db.contracts.Where(c => c.is_fulfilled == 1 && c.contract_end.Date == today && c.game_id == this.id).ToList();
+    //   List<Player> playerDeathsToday = new List<Player> {};
+    //   foreach(Contract contract in contractsToday)
+    //   {
+    //     Player targetPlayer = db.players.Where( p => p.assassin_id == contract.target_id && p.game_id == this.id).FirstOrDefault();
+    //     playerDeathsToday.Add(targetPlayer);
+    //   }
+    //   return playerDeathsToday;
+    // }
   }
 }

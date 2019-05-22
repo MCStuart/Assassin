@@ -17,7 +17,7 @@ namespace Assassin.Models
     public int is_fulfilled { get; set; }
     public string weapon { get; set; }
 
-    public int death_date_id {get; set;}
+    // public int death_date_id {get; set;}
 
 
 
@@ -87,9 +87,11 @@ namespace Assassin.Models
       return targetPlayerName;
     }
 
-    public void SetDateId()
+    /*public void SetDateId()
     {
-      DateTime gameStart = db.contracts.Where(c => c.contract_start).First();
+      DateTime gameTimeStart = db.contracts.Where(c => c.contract_start).First();
+      DateTime gameTimeEnd = db.contracts.Where(c => c.contract_end).Last();
+      int daysElapsed =
       List<Contracts> listOfFulfilledContracts = db.contracts.Where(c => c.is_fulfilled = 1).OrderBy(c => c.end_contract).ToList();
       foreach(Contract contract in listOfFulfilledContracts)
       {
@@ -99,7 +101,7 @@ namespace Assassin.Models
         }
 
       }
-    }
+    }*/
 
   }
 }
