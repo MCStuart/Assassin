@@ -11,7 +11,8 @@
 //     public int id { get; set; }
 //     public int contract_id { get; set; }
 //     public int assassin_id { get; set; }
-//     public DateTime  { get; set; }
+//     public int target_id { get; set; }
+//     public DateTime date { get; set; }
 //
 //   }
 // }
