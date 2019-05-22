@@ -12,11 +12,6 @@
 
 <body class="container">
 
-@{
-    Layout = "_Layout";
-}
-
-
 @if (@Model["game"].is_end == 0 && @Model["player"].is_admin == 1 && @Model["game"].is_start == 0)
 {
     <h1>You are admin</h1>

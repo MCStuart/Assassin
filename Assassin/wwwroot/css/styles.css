@@ -126,3 +126,9 @@ form#authentication {
 #signUpButton {
   background-color: #0c7382;
 }
+
+/* Rules and Consent styling */
+.rulesTitles {
+  text-align: center;
+  font-family: 'Fontdiner Swanky', cursive;
+}
