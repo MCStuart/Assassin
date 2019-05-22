@@ -1,23 +1,25 @@
-@{
-    ViewData["Title"] = "Home Page";
-}
 <!DOCTYPE html>
 <html>
   <head>
-    <meta charset='utf-8'>
     <title>Assassin</title>
     <link rel='stylesheet' href='https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css'>
     <link href="https://fonts.googleapis.com/css?family=Cantata+One|Fontdiner+Swanky|Limelight|Taviraj&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="~/css/styles.css">
   </head>
+  <body>
 
-<body class="container">
-<div class="text-center">
-    <h1 id="title" class="display-4">Assassin</h1>
-    <p><a href="/player/sign-up">Sign up</a></p>
-    <p><a href="login">Login</a></p>
-    <p><a href="/game/new">Start a new game</a></p>
-    <p><a href="/rules">Rules of the game</a></p>
-</div>
-</body>
+    <ul class="navbar">
+      <li><a href="/player/sign-up">Sign up</a></li>
+      <li><a href="login">Login</a></li>
+    </ul>
+    <ul class="navbar2"
+      <li><a href="/rules">Rules of the game</a></li>
+    </ul>
+
+      <h4 id="play">.</h4>
+      <p id="tagline">Kill your friends!</p>
+      <h1 id="title">Assassin</h1>
+      <p id="startButton"><a href="/game/new">Start a new game</a></p>
+
+  </body>
 </html>
