@@ -9,6 +9,10 @@ body {
   font-size: 2rem;
 }
 
+body.login {
+  background-image: url('/img/LogIn.jpg');
+}
+
 /* .text-center {
   background-color: rgba(94, 242, 227, 0.9);
   border-radius: 100%;
@@ -22,7 +26,6 @@ body {
   margin-top: 0;
   padding: 0;
   float: left;
-  margin-left: 0;
 }
 
 .navbar2 {
@@ -60,9 +63,25 @@ a {
   margin-top: 50px;
 }
 
+#splash-text {
+  margin-left: 15%;
+}
 
 #startButton {
   font-family: 'Taviraj', serif;
   text-align: left;
   font-size: 30px;
+  margin-left: 5%;
+}
+
+.title {
+  text-align: center;
+  font-size: 100px;
+  font-family: 'Fontdiner Swanky', cursive;
+  color: black;
+}
+
+form{
+  background-color: red;
+  padding: 20px;
 }
