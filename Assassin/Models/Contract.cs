@@ -65,7 +65,6 @@ namespace Assassin.Models
         Contract newContract = new Contract {game_id = newGameId, assassin_id = newAssassin, target_id = newTarget, contract_start = DateTime.Now, is_fulfilled = 0};
         db.contracts.Add(newContract);
       }
-
       db.SaveChanges();
     }
 
@@ -76,5 +75,6 @@ namespace Assassin.Models
       string targetPlayerName = targetPlayer.name;
       return targetPlayerName;
     }
+
   }
 }

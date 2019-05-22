@@ -49,7 +49,24 @@
         <div class="card-body" style="background-color:black">
             <h1 class="card-title">@Model["game"].team_name Daily Stats</h1><br>
             <div class="card-text">
-
+            @if (@Model["deathList"].Count == 0)
+            {
+              <h2>No one has died.</h2>
+              <h2>The streets are quiet today....too quiet.</h2>
+            }
+            @if (@Model["deathList"].Count == 1)
+            {
+                  <h1>@Model["deathList"][0].code_name</h1>
+                  <h1> IS DEAD! </h1>
+            }
+            @if (@Model["deathList"].Count > 1)
+            {
+                @foreach (Player player in @Model["deathList"])
+                {
+                  <h1>@player.code_name</h1>
+                }
+                <h1>...are dead</h1>
+            }
             </div>
         </div>
     </div>
@@ -92,7 +109,6 @@
           <div class="card-body" style="background-color:black">
               <h1 class="card-title">@Model["game"].team_name Daily Stats</h1><br>
               <div class="card-text">
-
               </div>
           </div>
       </div>
@@ -120,15 +136,11 @@
 @if (@Model["game"].is_end == 1 && @Model["game"].is_start == 0)
 {
   <h1>Game is Over</h1>
+  <h1>@Model["game"].LastAlive().code_name, aka <em><strong>@Model["game"].LastAlive().name</strong></em>, IS STILL OUT THERE, watch your back! </h1>
+  <h1>@Model["game"].FirstDead().code_name, aka <em><strong>@Model["game"].FirstDead().name</strong></em>, was the FIRST DEAD. </h1>
+  <h1>@Model["game"].MostKills()["player"].code_name, aka <em><strong>@Model["game"].MostKills()["player"].name</strong></em>, had the MOST KILLS. WOW: @Model["game"].MostKills()["total"] kills! </h1>
+  <h1>@Model["game"].MostSpoonKills().code_name, aka <em><strong>@Model["game"].MostSpoonKills().name</strong></em>, had the MOST SPOON KILLS at @Model["game"].MostSpoonKills().spoon_score kills.</h1>
+  <h1>@Model["game"].MostSockKills().code_name, aka <em><strong>@Model["game"].MostSockKills().name</strong></em>, had the MOST SOCK KILLS at @Model["game"].MostSockKills().sock_score kills.</h1>
 }
-<<<<<<< HEAD
+
 </body>
-</html>
-=======
-
-//Small stats we chose to display while game is active lives here
-
-
-
-//All endgame stats will live here after the game is over VVV
->>>>>>> 00558e9bc2f9c6240182c317e76b4ea037558d82
