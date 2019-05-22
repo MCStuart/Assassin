@@ -1,5 +1,5 @@
 body {
-  background-image: url('../Binoculars.jpg');
+  background-image: url('/img/splash09.jpg');
   background-position: center;
   background-repeat: no-repeat;
   background-attachment: fixed;
@@ -9,15 +9,79 @@ body {
   font-size: 2rem;
 }
 
-#title {
-  font-size: 50px;
-  font-family: 'Fontdiner Swanky', cursive;
+body.login {
+  background-image: url('/img/LogIn.jpg');
 }
 
-.text-center {
+/* .text-center {
   background-color: rgba(94, 242, 227, 0.9);
   border-radius: 100%;
   border: 4px dotted black;
   margin-top: 20vh;
+  padding: 20px;
+} */
+
+.navbar {
+  list-style-type: none;
+  margin-top: 0;
+  padding: 0;
+  float: left;
+}
+
+.navbar2 {
+  float: right;
+  list-style-type: none;
+  margin-top: 0;
+  padding: 0;
+
+}
+
+a {
+  display: block;
+  padding: 8px;
+}
+
+#title {
+  font-size: 100px;
+  font-family: 'Fontdiner Swanky', cursive;
+  text-align: left;
+  color: #d00001;
+}
+
+#play {
+  font-family: 'Fontdiner Swanky', cursive;
+  font-size: 50px;
+  /* text-align: left; */
+  color: #fbf496;
+}
+
+#tagline {
+  font-family: 'Fontdiner Swanky', cursive;
+  text-align: left;
+  font-size: 50px;
+  color: #d00001;
+  margin-top: 50px;
+}
+
+#splash-text {
+  margin-left: 15%;
+}
+
+#startButton {
+  font-family: 'Taviraj', serif;
+  text-align: left;
+  font-size: 30px;
+  margin-left: 5%;
+}
+
+.title {
+  text-align: center;
+  font-size: 100px;
+  font-family: 'Fontdiner Swanky', cursive;
+  color: black;
+}
+
+form{
+  background-color: red;
   padding: 20px;
 }

@@ -14,9 +14,9 @@
     <link rel="stylesheet" href="~/css/styles.css">
   </head>
 
-<body class="container">
+<body id="playerSignUp" class="container">
 <div class="text-center">
-  <h1 id="title" class="display-4">Assassin - Sign Up</h1>
+  <h3 class="title" class="display-4">Sign Up</h3>
   @if (@Model == null)
   {
     <form action="/player/sign-up/authenticate" method="get" id="signUp">
