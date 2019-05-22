@@ -1,8 +1,6 @@
-@{
-    ViewData["Title"] = "Login";
-}
+
 <!DOCTYPE html>
-<html>
+<html class="login">
   <head>
     <meta charset='utf-8'>
     <title>Assassin</title>
@@ -11,15 +9,15 @@
     <link rel="stylesheet" href="~/css/styles.css">
   </head>
 
-<body id="login" class="container">
+<body class="container">
 <div class="text-center">
-  <h3 class="title" class="display-4">Log In</h3>
+  <h3 class="title" id="loginTitle">Log In</h3>
     <form action="/authenticate" method="Post" id="authentication">
-      <label for="userName">Email:</label>
+      <label for="userName">Email:</label><br>
       <input name="userName" type="text"></input><br>
-      <label for="uPassword">Password:</label>
+      <label for="uPassword">Password:</label><br>
       <input name="uPassword" type="password"></input><br>
-      <button type="submit" class="btn btn-danger">Submit</button>
+      <button type="submit" class="btn btn-danger" id="loginButton">Submit</button>
     </form>
   </div>
 </body>
