@@ -1,7 +1,17 @@
 @{
     ViewData["Title"] = "Consent";
 }
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset='utf-8'>
+    <title>Assassin</title>
+    <link rel='stylesheet' href='https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css'>
+    <link href="https://fonts.googleapis.com/css?family=Cantata+One|Fontdiner+Swanky|Limelight|Taviraj&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="~/css/styles.css">
+  </head>
 
+<body class="container">
 <div class="text-center">
     <h1 id="title" class="display-4">Assassin - Consent</h1><br>
     <h2><strong>@Model["player"].code_name</strong>, please read through the rules. By selecting the check box and clicking submit, you agree to play by the rules.</h2><br><br>
@@ -28,3 +38,5 @@
       <input type="checkbox" required>I agree to follow the rules of the game.</input><br>
       <button type="submit" class=" btn btn-dark"><a href="/game/@Model["game"].id/player/@Model["player"].id">Submit</a></button>
 </div>
+</body>
+</html>

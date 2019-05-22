@@ -1,17 +1,23 @@
 body {
-  background-color: black;
+  background-image: url('../Binoculars.jpg');
+  background-position: center;
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+  background-size: cover;
   color: white;
+  font-family: 'Taviraj', serif;
+  font-size: 2rem;
 }
 
 #title {
-  font-size: 100px;
+  font-size: 50px;
+  font-family: 'Fontdiner Swanky', cursive;
 }
 
-.stats {
-  background-color: darkgrey;
-  color: black;
-}
-
-.card-body {
-  background-color: darkgrey;
+.text-center {
+  background-color: rgba(94, 242, 227, 0.9);
+  border-radius: 100%;
+  border: 4px dotted black;
+  margin-top: 20vh;
+  padding: 20px;
 }
