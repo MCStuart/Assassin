@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using System.Diagnostics;
 using System.Linq;
@@ -35,11 +35,11 @@ namespace Assassin.Controllers
             Player thisPlayer = db.players.Where(p => p.email == userName && p.password == uPassword).FirstOrDefault();
             if (thisPlayer == null)
             {
-              return RedirectToAction("TryAgain");
+                return RedirectToAction("TryAgain");
             }
             else
             {
-              return RedirectToAction("Index", "Players", new {gameId = thisPlayer.game_id, id = thisPlayer.id});
+                return RedirectToAction("Index", "Players", new {gameId = thisPlayer.game_id, id = thisPlayer.id});
             }
         }
 
@@ -49,10 +49,6 @@ namespace Assassin.Controllers
             return View();
         }
 
-        [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
-        public IActionResult Error()
-        {
-            return View(new ErrorViewModel { RequestId = Activity.Current?.Id ?? HttpContext.TraceIdentifier });
-        }
+
     }
 }

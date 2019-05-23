@@ -1,146 +1,192 @@
 @using Assassin.Models
 
-@{
-    ViewData["Title"] = "Player";
-}
 <!DOCTYPE html>
-<html>
-  <head>
-    <meta charset='utf-8'>
-    <title>Assassin</title>
-    <link rel='stylesheet' href='https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css'>
-    <link href="https://fonts.googleapis.com/css?family=Cantata+One|Fontdiner+Swanky|Limelight|Taviraj&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="~/css/styles.css">
-  </head>
-
-<body class="container">
-
-@{
-    Layout = "_Layout";
-}
-
-
-@if (@Model["game"].is_end == 0 && @Model["player"].is_admin == 1 && @Model["game"].is_start == 0)
-{
-    <h1>You are admin</h1>
-    <h1>Ready to being the game....?</h1>
-    <h1>Is everyone signed up....?</h1>
-    <h1>Does everyone understand the rules....?</h1>
-    <form action="/game/@Model["game"].id/player/@Model["player"].id/start-game" method="post">
-      <button type="submit">Start Game</button>
-    </form>
-}
-
-@if (@Model["player"].is_admin == 0 && @Model["game"].is_start == 0 && @Model["game"].is_end == 0)
-{
-  <h1>Welcome @Model["player"].code_name</h1>
-
-  <h1>You are a part of @Model["game"].team_name</h1>
-
-  <h1>Waiting for everyone to join the game and the admin to click start.</h1>
-}
-
-@if (@Model["game"].is_start == 1 && @Model["player"].is_alive == 1)
-{
-<h1>game in progress</h1>
-
-<div class="row">
-    <div class="card col-md-4">
-        <div class="card-body" style="background-color:black">
-            <h1 class="card-title">@Model["game"].team_name Daily Stats</h1><br>
-            <div class="card-text">
-            @if (@Model["deathList"].Count == 0)
-            {
-              <h2>No one has died.</h2>
-              <h2>The streets are quiet today....too quiet.</h2>
-            }
-            @if (@Model["deathList"].Count == 1)
-            {
-                  <h1>@Model["deathList"][0].code_name</h1>
-                  <h1> IS DEAD! </h1>
-            }
-            @if (@Model["deathList"].Count > 1)
-            {
-                @foreach (Player player in @Model["deathList"])
-                {
-                  <h1>@player.code_name</h1>
-                }
-                <h1>...are dead</h1>
-            }
+<html class="playerIndex">
+    <head>
+        <meta charset='utf-8'>
+        <title>Assassin</title>
+        <link rel='stylesheet' href='https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css'>
+        <link href="https://fonts.googleapis.com/css?family=Cantata+One|Fontdiner+Swanky|Limelight|Taviraj&display=swap" rel="stylesheet">
+        <link rel="stylesheet" href="~/css/styles.css">
+    </head>
+    <header>
+        <!-- //Navbar start ------->
+        <nav class="navbar navbar-expand-md" id="indexNav">
+            <img src="~/favicon.ico" width="40" height="40" alt="A png of a knife" href="/">Assassin
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav">
+                    <li class="nav-item">
+                        <a href="/">Home</a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="/rules">Rules of the Game</a>
+                    </li>
+                </ul>
             </div>
+        </nav>
+        <!-- //Navbar end ------->
+    </header>
+    <body>
+        <div class="container">
+            @if (@Model["game"].is_end == 0 && @Model["player"].is_admin == 1 && @Model["game"].is_start == 0)
+            {
+                <div id="adminBeforeGame">
+                    <div class="rulesBox indexBox">
+                        <h1><strong>You are <em>the director of this game:</em></strong</h1><br>
+                        <h2>--> Invite friends to sign up for this game!</h2>
+                        <h2>--> Give them the <strong>Group Name</strong> and <strong>Group Password</strong>!</h2>
+                        <hr>
+                        <h1><strong>Is everyone signed up?</strong></h1>
+                        <h2><em>Does everyone understand the rules?</em></h2>
+                        <form action="/game/@Model["game"].id/player/@Model["player"].id/start-game" method="post" id="startForm">
+                            <button class="btn btn-danger" type="submit">Start Game</button>
+                        </form>
+                    </div>
+                </div>
+            }
+            @if (@Model["player"].is_admin == 0 && @Model["game"].is_start == 0 && @Model["game"].is_end == 0)
+            {
+                <div id="playerBeforeGame">
+                    <div class="rulesBox indexBox">
+                        <h1>Welcome, Agent @Model["player"].code_name.</h1>
+
+                        <h1>You are a part of @Model["game"].team_name.</h1>
+
+                        <h1>Please check back to see your first assignment.</h1>
+                    </div>
+                </div>
+            }
+            @if (@Model["game"].is_start == 1 && @Model["player"].is_alive == 1)
+            {
+                <div id="inProgress">
+                    <h3 class="title index-title">Kill... or BE killed!</h3>
+                    <div class="row">
+                        <div class="card col-md-4">
+                            <div class="card-body">
+                                <h1 class="card-title">@Model["game"].team_name <br> Daily Stats</h1><br>
+                                <div class="card-text">
+                                    @if (@Model["deathList"].Count == 0)
+                                    {
+                                        <h2>No one has died.</h2>
+                                        <h2>The streets are quiet today... too quiet.</h2>
+                                    }
+                                    @if (@Model["deathList"].Count == 1)
+                                    {
+                                        <h1>@Model["deathList"][0].code_name</h1>
+                                        <h1> IS DEAD! </h1>
+                                    }
+                                    @if (@Model["deathList"].Count > 1)
+                                    {
+                                        <ul>
+                                            @foreach (Player player in @Model["deathList"])
+                                            {
+                                                <li style="font-size:35px">Agent @player.code_name</li>
+                                            }
+                                        </ul>
+                                        <h1>...are dead</h1>
+                                    }
+                                </div>
+                            </div>
+                        </div>
+                        <div class="card col-md-4">
+                            <div class="card-body">
+                                <h1 class="card-title">Agent @Model["player"].code_name Stats</h1><br>
+                                <div class="card-text">
+                                    <h2>sock score: @Model["player"].sock_score</h2>
+                                    <h2>spoon score: @Model["player"].spoon_score</h2>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="card col-md-4">
+                            <div class="card-body">
+                                <h1 class="card-title">Your contract</h1><br>
+                                <div class="card-text">
+                                    <h2>Your target name:</h2>
+                                    <h2>@Model["contract"].TargetPlayerInfo(@Model["game"].id)</h2>
+
+                                    <form action="/game/@Model["game"].id/player/@Model["player"].id/contract-complete" method="post">
+                                        <select id='weapon' name='weapon' type='text'>
+                                            <option value="sock">Sock</option>
+                                            <option value="spoon">Spoon</option>
+                                        </select><br><br>
+                                        <button type="submit">Contract Complete</button>
+                                    </form>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <br>
+                    <br>
+                    <br>
+                </div>
+            }
+            @if (@Model["player"].is_alive == 0)
+            {
+                <div id="playerDead">
+                    <h3 class="title index-title">You've been assassinated!!!</h3>
+                    <div class="row">
+                        <div class="card col-md-6">
+                            <div class="card-body">
+                                <h1 class="card-title">@Model["game"].team_name <br> Daily Stats</h1><br>
+                                <div class="card-text">
+                                    @if (@Model["deathList"].Count == 0)
+                                    {
+                                        <h2>No one has died.</h2>
+                                        <h2>The streets are quiet today... too quiet.</h2>
+                                    }
+                                    @if (@Model["deathList"].Count == 1)
+                                    {
+                                        <h1>@Model["deathList"][0].code_name</h1>
+                                        <h1> IS DEAD! </h1>
+                                    }
+                                    @if (@Model["deathList"].Count > 1)
+                                    {
+                                        <ul>
+                                            @foreach (Player player in @Model["deathList"])
+                                            {
+                                                <li style="font-size:35px">Agent @player.code_name</li>
+                                            }
+                                        </ul>
+                                        <h1>...are dead</h1>
+                                    }
+                                </div>
+                            </div>
+                        </div>
+                        <div class="card col-md-6">
+                            <div class="card-body">
+                                <h1 class="card-title">Agent @Model["player"].code_name you are dead.</h1><br>
+                                <div class="card-text">
+                                    <h1>Your game stats:</h1>
+                                    <h2>sock score: @Model["player"].sock_score</h2>
+                                    <h2>spoon score: @Model["player"].spoon_score</h2>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <br>
+                <br>
+                <br>
+            }
+            @if (@Model["game"].is_end == 1 && @Model["game"].is_start == 0)
+            {
+                <div id="gameOver">
+                    <h3 class="title index-title">Game over!</h3>
+                    <div class="rulesBox indexBox">
+                        <h2>Agent @Model["game"].LastAlive().code_name, aka <em><strong>@Model["game"].LastAlive().name</strong></em>, IS STILL OUT THERE, watch your back! </h2><br>
+                        <h2>Agent @Model["game"].FirstDead().code_name, aka <em><strong>@Model["game"].FirstDead().name</strong></em>, was the FIRST DEAD. </h2><br>
+                        <h2>Agent @Model["game"].MostKills()["player"].code_name, aka <em><strong>@Model["game"].MostKills()["player"].name</strong></em>, had the MOST KILLS. WOW: @Model["game"].MostKills()["total"] kills! </h2><br>
+                        <h2>Agent @Model["game"].MostSpoonKills().code_name, aka <em><strong>@Model["game"].MostSpoonKills().name</strong></em>, had the MOST SPOON KILLS at @Model["game"].MostSpoonKills().spoon_score kills.</h2><br>
+                        <h2>Agent @Model["game"].MostSockKills().code_name, aka <em><strong>@Model["game"].MostSockKills().name</strong></em>, had the MOST SOCK KILLS at @Model["game"].MostSockKills().sock_score kills.</h2><br>
+                    </div>
+                    <br>
+                    <br>
+                    <br>
+                </div>
+            }
         </div>
-    </div>
-    <div class="card col-md-4">
-        <div class="card-body" style="background-color:black">
-            <h1 class="card-title">@Model["player"].code_name</h1><br>
-            <div class="card-text">
-              <h2>sock score: @Model["player"].sock_score</h2>
-              <h2>spoon score: @Model["player"].spoon_score</h2>
-            </div>
-        </div>
-    </div>
-    <div class="card col-md-4">
-        <div class="card-body" style="background-color:black">
-            <h1 class="card-title">Your contract</h1><br>
-            <div class="card-text">
-                <h2>Your target name:</h2>
-                <h2>@Model["contract"].TargetPlayerInfo(@Model["game"].id);</h2>
-
-                <form action="/game/@Model["game"].id/player/@Model["player"].id/contract-complete" method="post">
-                  <select id='weapon' name='weapon' type='text'>
-                    <option value="sock">Sock</option>
-                    <option value="spoon">Spoon</option>
-                  </select><br><br>
-                  <button type="submit">Contract Complete</button>
-                </form>
-            </div>
-        </div>
-    </div>
-</div>
-
-}
-
-@if (@Model["player"].is_alive == 0)
-{
-  <h1>YOU ARE DEAD!!!!!!!!</h1>
-
-  <div class="row">
-      <div class="card col-md-4">
-          <div class="card-body" style="background-color:black">
-              <h1 class="card-title">@Model["game"].team_name Daily Stats</h1><br>
-              <div class="card-text">
-              </div>
-          </div>
-      </div>
-      <div class="card col-md-4">
-          <div class="card-body" style="background-color:black">
-              <h1 class="card-title">@Model["player"].code_name</h1><br>
-              <div class="card-text">
-              <h1>YOU ARE DEAD!!!!!!!!</h1>
-                <h2>sock score: @Model["player"].sock_score</h2>
-                <h2>spoon score: @Model["player"].spoon_score</h2>
-              </div>
-          </div>
-      </div>
-      <div class="card col-md-4">
-          <div class="card-body" style="background-color:black">
-              <h1 class="card-title">Your contract</h1><br>
-              <div class="card-text">
-                  <h1>YOU ARE DEAD!!!!!!!!</h1>
-              </div>
-          </div>
-      </div>
-  </div>
-}
-
-@if (@Model["game"].is_end == 1 && @Model["game"].is_start == 0)
-{
-  <h1>Game is Over</h1>
-  <h1>@Model["game"].LastAlive().code_name, aka <em><strong>@Model["game"].LastAlive().name</strong></em>, IS STILL OUT THERE, watch your back! </h1>
-  <h1>@Model["game"].FirstDead().code_name, aka <em><strong>@Model["game"].FirstDead().name</strong></em>, was the FIRST DEAD. </h1>
-  <h1>@Model["game"].MostKills()["player"].code_name, aka <em><strong>@Model["game"].MostKills()["player"].name</strong></em>, had the MOST KILLS. WOW: @Model["game"].MostKills()["total"] kills! </h1>
-  <h1>@Model["game"].MostSpoonKills().code_name, aka <em><strong>@Model["game"].MostSpoonKills().name</strong></em>, had the MOST SPOON KILLS at @Model["game"].MostSpoonKills().spoon_score kills.</h1>
-  <h1>@Model["game"].MostSockKills().code_name, aka <em><strong>@Model["game"].MostSockKills().name</strong></em>, had the MOST SOCK KILLS at @Model["game"].MostSockKills().sock_score kills.</h1>
-}
-
-</body>
+    </body>
+</html>

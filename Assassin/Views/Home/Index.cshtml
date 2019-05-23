@@ -1,23 +1,40 @@
-@{
-    ViewData["Title"] = "Home Page";
-}
 <!DOCTYPE html>
-<html>
-  <head>
-    <meta charset='utf-8'>
-    <title>Assassin</title>
-    <link rel='stylesheet' href='https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css'>
-    <link href="https://fonts.googleapis.com/css?family=Cantata+One|Fontdiner+Swanky|Limelight|Taviraj&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="~/css/styles.css">
-  </head>
-
-<body class="container">
-<div class="text-center">
-    <h1 id="title" class="display-4">Assassin</h1>
-    <p><a href="/player/sign-up">Sign up</a></p>
-    <p><a href="login">Login</a></p>
-    <p><a href="/game/new">Start a new game</a></p>
-    <p><a href="/rules">Rules of the game</a></p>
-</div>
-</body>
+<html class="splash">
+    <head>
+        <title>Assassin</title>
+        <link rel='stylesheet' href='~/css/bootstrap.css'>
+        <link href="https://fonts.googleapis.com/css?family=Cantata+One|Fontdiner+Swanky|Limelight|Taviraj&display=swap" rel="stylesheet">
+        <link rel="stylesheet" href="~/css/styles.css">
+    </head>
+    <header>
+        <!-- //Navbar start ------->
+        <nav class="navbar navbar-expand-md" id="indexNav">
+            <img src="~/favicon.ico" width="40" height="40" alt="A png of a knife" href="/">Assassin
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav">
+                    <li class="nav-item">
+                        <a class="nav-link" href="/player/sign-up">Sign Up</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="/login">Login</a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="/rules">Rules of the Game</a>
+                    </li>
+                </ul>
+            </div>
+        </nav>
+        <!-- //Navbar end ------->
+    </header>
+    <body>
+        <div id="splash-text">
+            <h4 id="play">.</h4>
+            <p id="tagline">Kill your friends!</p>
+            <h1 id="title">Assassin</h1>
+            <p id="startButton"><a href="/game/new" class="btn" id="splash-button">Start a new game</a></p>
+        </div>
+    </body>
 </html>

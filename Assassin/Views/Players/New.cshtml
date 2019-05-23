@@ -1,60 +1,78 @@
-@{
-    ViewData["Title"] = "Sign Up";
-}
-
 @using Assassin.Models;
 
 <!DOCTYPE html>
-<html>
-  <head>
-    <meta charset='utf-8'>
-    <title>Assassin</title>
-    <link rel='stylesheet' href='https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css'>
-    <link href="https://fonts.googleapis.com/css?family=Cantata+One|Fontdiner+Swanky|Limelight|Taviraj&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="~/css/styles.css">
-  </head>
-
-<body class="container">
-<div class="text-center">
-  <h1 id="title" class="display-4">Assassin - Sign Up</h1>
-  @if (@Model == null)
-  {
-    <form action="/player/sign-up/authenticate" method="get" id="signUp">
-      <label for="gameName">The name of the game you are joining:</label>
-      <input name="gameName" type="text"></input>
-      <label for="gamePassword">The group password:</label>
-      <input name="gamePassword" type="password"></input>
-      <button type="submit" class="btn btn-dark">Submit</button>
-    </form>
-  }
-  else if (@Model.Count == 2)
-  {
-    <h2>@Model[0]. @Model[1]</h2>
-    <form action="/player/sign-up/authenticate" method="get" id="signUp">
-      <label for="gameName">The name of the game you are joining:</label>
-      <input name="gameName" type="text"></input>
-      <label for="gamePassword">The group password:</label>
-      <input name="gamePassword" type="password"></input>
-      <button type="submit" class="btn btn-dark">Submit</button>
-    </form>
-  }
-  else if (@Model.Count == 1)
-  {
-    <form action="/player/sign-up-success" method="post" id="signUp">
-      <label for="name">First name, last initial:</label>
-      <input name="name" type="text" value="ex: Dima E."></input>
-      <label for="email">email:</label>
-      <input name="email" type="text"></input>
-      <label for="password">Password:</label>
-      <input name="password" type="password"></input>
-      <label for="phoneNumber">Phone number:</label>
-      <input name="phoneNumber" type="text"></input>
-      <label for="agentName">Agent Name:</label>
-      <input name="agentName" type="text"></input>
-      <input name="gameId" type="hidden" value="@Model[0].id"></input>
-      <button type="submit" class="btn btn-dark">Submit</button>
-    </form>
-  }
-</div>
-</body>
+<html class="signUp">
+    <head>
+        <meta charset='utf-8'>
+        <title>Assassin</title>
+        <link rel='stylesheet' href='https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css'>
+        <link href="https://fonts.googleapis.com/css?family=Cantata+One|Fontdiner+Swanky|Limelight|Taviraj&display=swap" rel="stylesheet">
+        <link rel="stylesheet" href="~/css/styles.css">
+    </head>
+    <header>
+        <!-- //Navbar start ------->
+        <nav class="navbar navbar-expand-md" id="indexNav">
+            <img src="~/favicon.ico" width="40" height="40" alt="A png of a knife" href="/">Assassin
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav">
+                    <li class="nav-item">
+                        <a class="nav-link" href="/">Home</a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="/rules">Rules of the Game</a>
+                    </li>
+                </ul>
+            </div>
+        </nav>
+        <!-- //Navbar end ------->
+    </header>
+    <body id="playerSignUp">
+        <div class="text-center container">
+            <h3 class="title" id="signUpTitle">Sign Up</h3>
+            @if (@Model == null)
+            {
+                <form action="/player/sign-up/authenticate" method="get" id="signUp">
+                    <label for="gameName">The name of the game you are joining:</label><br>
+                    <input name="gameName" type="text"></input><br>
+                    <label for="gamePassword">The group password:</label><br>
+                    <input name="gamePassword" type="password"></input><br>
+                    <button type="submit" class="btn btn-dark" id="signUpButton">Submit</button>
+                </form>
+            }
+            else if (@Model.Count == 2)
+            {
+                <h2>@Model[0]. @Model[1]</h2>
+                <form action="/player/sign-up/authenticate" method="get" id="signUp">
+                    <label for="gameName">The name of the game you are joining:</label><br>
+                    <input name="gameName" type="text"></input><br>
+                    <label for="gamePassword">The group password:</label><br>
+                    <input name="gamePassword" type="password"></input><br>
+                    <button type="submit" class="btn btn-dark" id="signUpButton">Submit</button>
+                </form>
+            }
+            else if (@Model.Count == 1)
+            {
+                <form action="/player/sign-up-success" method="post" id="signUp">
+                    <label for="name">First name, last initial:</label><br>
+                    <input name="name" type="text" placeholder="ex: Dima E."></input><br><br>
+                    <label for="email">email:</label><br>
+                    <input name="email" type="text"></input><br><br>
+                    <label for="password">Password:</label><br>
+                    <input name="password" type="password"></input><br><br>
+                    <label for="phoneNumber">Phone number:</label><br>
+                    <input name="phoneNumber" type="text"></input><br><br>
+                    <label for="agentName">Code Name:</label><br>
+                    <input name="agentName" type="text"></input><br>
+                    <input name="gameId" type="hidden" value="@Model[0].id"></input>
+                    <button type="submit" class="btn btn-dark" id="signUpButton">Submit</button>
+                </form>
+                <br>
+                <br>
+                <br>
+            }
+        </div>
+    </body>
 </html>
