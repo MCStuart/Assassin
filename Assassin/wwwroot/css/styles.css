@@ -198,12 +198,17 @@ form#authentication {
 
 /* Player index page */
 .playerIndex {
-  background-image: url('../eyes.jpg');
+  background-image: url('/img/eyes.jpg');
   background-position: right;
 }
 
 .indexBox {
   margin: 25px;
+}
+
+.index-title {
+  color: #8fdce7;
+  text-shadow: 2px 2px black;
 }
 
 #startForm {

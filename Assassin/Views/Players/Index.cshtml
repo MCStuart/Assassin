@@ -62,7 +62,7 @@
             @if (@Model["game"].is_start == 1 && @Model["player"].is_alive == 1)
             {
                 <div id="inProgress">
-                    <h3 class="title" id="new-game-title">Kill... or BE killed!</h3>
+                    <h3 class="title index-title">Kill... or BE killed!</h3>
                     <div class="row">
                         <div class="card col-md-4">
                             <div class="card-body">
@@ -126,7 +126,7 @@
             @if (@Model["player"].is_alive == 0)
             {
                 <div id="playerDead">
-                    <h3 class="title" id="new-game-title">You've been assassinated!!!</h3>
+                    <h3 class="title index-title">You've been assassinated!!!</h3>
                     <div class="row">
                         <div class="card col-md-6">
                             <div class="card-body">
@@ -174,7 +174,7 @@
             @if (@Model["game"].is_end == 1 && @Model["game"].is_start == 0)
             {
                 <div id="gameOver">
-                    <h3 class="title" id="new-game-title">Game over!</h3>
+                    <h3 class="title index-title">Game over!</h3>
                     <div class="rulesBox indexBox">
                         <h2>Agent @Model["game"].LastAlive().code_name, aka <em><strong>@Model["game"].LastAlive().name</strong></em>, IS STILL OUT THERE, watch your back! </h2><br>
                         <h2>Agent @Model["game"].FirstDead().code_name, aka <em><strong>@Model["game"].FirstDead().name</strong></em>, was the FIRST DEAD. </h2><br>
