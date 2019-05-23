@@ -1,5 +1,3 @@
-
-
 @using Assassin.Models;
 
 <!DOCTYPE html>
@@ -29,27 +27,27 @@
   {
     <h2>@Model[0]. @Model[1]</h2>
     <form action="/player/sign-up/authenticate" method="get" id="signUp">
-      <label for="gameName">The name of the game you are joining:</label>
-      <input name="gameName" type="text"></input>
-      <label for="gamePassword">The group password:</label>
-      <input name="gamePassword" type="password"></input>
+      <label for="gameName">The name of the game you are joining:</label><br>
+      <input name="gameName" type="text"></input><br>
+      <label for="gamePassword">The group password:</label><br>
+      <input name="gamePassword" type="password"></input><br>
       <button type="submit" class="btn btn-dark" id="signUpButton">Submit</button>
     </form>
   }
   else if (@Model.Count == 1)
   {
     <form action="/player/sign-up-success" method="post" id="signUp">
-      <label for="name">First name, last initial:</label>
-      <input name="name" type="text" value="ex: Dima E."></input>
-      <label for="email">email:</label>
-      <input name="email" type="text"></input>
-      <label for="password">Password:</label>
-      <input name="password" type="password"></input>
-      <label for="phoneNumber">Phone number:</label>
-      <input name="phoneNumber" type="text"></input>
-      <label for="agentName">Agent Name:</label>
-      <input name="agentName" type="text"></input>
-      <input name="gameId" type="hidden" value="@Model[0].id"></input>
+      <label for="name">First name, last initial:</label><br>
+      <input name="name" type="text" placeholder="ex: Dima E."></input><br>
+      <label for="email">email:</label><br>
+      <input name="email" type="text"></input><br>
+      <label for="password">Password:</label><br>
+      <input name="password" type="password"></input><br>
+      <label for="phoneNumber">Phone number:</label><br>
+      <input name="phoneNumber" type="text"></input><br>
+      <label for="agentName">Code Name:</label><br>
+      <input name="agentName" type="text"></input><br>
+      <input name="gameId" type="hidden" value="@Model[0].id"></input><br>
       <button type="submit" class="btn btn-dark" id="signUpButton">Submit</button>
     </form>
   }
