@@ -58,6 +58,7 @@ _To make your own database in MySql shell:_
 
 | Behavior | Input | Output |
 | ------------- |:-------------:| -----:|
+| No user interactability Required | Effort | Knowledge |
 
 ## Specs - "New Game" - Games/New.cshtml
 
