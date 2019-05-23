@@ -19,14 +19,14 @@ namespace Assassin.Controllers
         [HttpPost("/game/new")]
         public IActionResult Create(string gameName, string gamePassword, string name, string email, string password, string phoneNumber, string agentName)
         {
-          var db = new AssassinContext();
-          var game = new Game {team_name = gameName, password = gamePassword, is_start = 0, is_end = 0};
-          db.games.Add(game);
-          db.SaveChanges();
-          var player = new Player {is_alive = 1, name = name, password = password, email = email, code_name = agentName, game_id = game.id, spoon_score = 0, sock_score = 0, phone_number = phoneNumber, is_admin = 1};
-          db.players.Add(player);
-          db.SaveChanges();
-          return RedirectToAction("Consent", "Players", new {gameId = game.id, id = player.id});
+            var db = new AssassinContext();
+            var game = new Game {team_name = gameName, password = gamePassword, is_start = 0, is_end = 0};
+            db.games.Add(game);
+            db.SaveChanges();
+            var player = new Player {is_alive = 1, name = name, password = password, email = email, code_name = agentName, game_id = game.id, spoon_score = 0, sock_score = 0, phone_number = phoneNumber, is_admin = 1};
+            db.players.Add(player);
+            db.SaveChanges();
+            return RedirectToAction("Consent", "Players", new {gameId = game.id, id = player.id});
         }
 
     }
