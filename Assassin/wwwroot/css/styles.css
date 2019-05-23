@@ -27,7 +27,7 @@ a {
   text-shadow: 2px 2px grey;
 }
 
-form{
+form, .rulesBox{
   padding: 20px;
   border: 1px solid black;
   background-color: rgba(255,255,255, 0.9);
@@ -128,7 +128,32 @@ form#authentication {
 }
 
 /* Rules and Consent styling */
+.rulesPage {
+  background-image: url('/img/bubble01.jpg');
+}
+
 .rulesTitles {
   text-align: center;
   font-family: 'Fontdiner Swanky', cursive;
+  color: #D00001;
+}
+
+.rulesMain {
+  color: rgb(254,201,57);
+  text-shadow: 2px 2px black;
+}
+
+/* Player index page */
+.playerIndex {
+  background-image: url('../eyes.jpg');
+  background-position: right;
+}
+
+.indexBox {
+  margin: 25px;
+}
+
+#startForm {
+  border: none;
+  background-color: transparent;
 }

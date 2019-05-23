@@ -1,7 +1,7 @@
 @using Assassin.Models
 
 <!DOCTYPE html>
-<html>
+<html class="playerIndex">
   <head>
     <meta charset='utf-8'>
     <title>Assassin</title>
@@ -14,28 +14,31 @@
 
 @if (@Model["game"].is_end == 0 && @Model["player"].is_admin == 1 && @Model["game"].is_start == 0)
 {
-    <h1>You are admin</h1>
-    <h1>Ready to being the game....?</h1>
-    <h1>Is everyone signed up....?</h1>
-    <h1>Does everyone understand the rules....?</h1>
-    <form action="/game/@Model["game"].id/player/@Model["player"].id/start-game" method="post">
+    <div class="rulesBox indexBox">
+    <h1>You are The Director</h1>
+    <h1>Ready to begin the game?</h1>
+    <h1>Is everyone signed up?</h1>
+    <h1>Does everyone understand the rules?</h1>
+    <form action="/game/@Model["game"].id/player/@Model["player"].id/start-game" method="post" id="startForm">
       <button type="submit">Start Game</button>
     </form>
+    </div>
 }
 
 @if (@Model["player"].is_admin == 0 && @Model["game"].is_start == 0 && @Model["game"].is_end == 0)
 {
-  <h1>Welcome @Model["player"].code_name</h1>
+  <div class="rulesBox indexBox">
+  <h1>Welcome, Agent @Model["player"].code_name</h1>
 
   <h1>You are a part of @Model["game"].team_name</h1>
 
-  <h1>Waiting for everyone to join the game and the admin to click start.</h1>
+  <h1>Please check back to see your first assignment.</h1>
+  </div>
 }
 
 @if (@Model["game"].is_start == 1 && @Model["player"].is_alive == 1)
 {
 <h1>game in progress</h1>
-
 <div class="row">
     <div class="card col-md-4">
         <div class="card-body" style="background-color:black">
@@ -44,7 +47,7 @@
             @if (@Model["deathList"].Count == 0)
             {
               <h2>No one has died.</h2>
-              <h2>The streets are quiet today....too quiet.</h2>
+              <h2>The streets are quiet today... too quiet.</h2>
             }
             @if (@Model["deathList"].Count == 1)
             {
@@ -127,12 +130,14 @@
 
 @if (@Model["game"].is_end == 1 && @Model["game"].is_start == 0)
 {
+  <div class="rulesBox indexBox">
   <h1>Game is Over</h1>
   <h1>@Model["game"].LastAlive().code_name, aka <em><strong>@Model["game"].LastAlive().name</strong></em>, IS STILL OUT THERE, watch your back! </h1>
   <h1>@Model["game"].FirstDead().code_name, aka <em><strong>@Model["game"].FirstDead().name</strong></em>, was the FIRST DEAD. </h1>
   <h1>@Model["game"].MostKills()["player"].code_name, aka <em><strong>@Model["game"].MostKills()["player"].name</strong></em>, had the MOST KILLS. WOW: @Model["game"].MostKills()["total"] kills! </h1>
   <h1>@Model["game"].MostSpoonKills().code_name, aka <em><strong>@Model["game"].MostSpoonKills().name</strong></em>, had the MOST SPOON KILLS at @Model["game"].MostSpoonKills().spoon_score kills.</h1>
   <h1>@Model["game"].MostSockKills().code_name, aka <em><strong>@Model["game"].MostSockKills().name</strong></em>, had the MOST SOCK KILLS at @Model["game"].MostSockKills().sock_score kills.</h1>
+  </div>
 }
 
 </body>
