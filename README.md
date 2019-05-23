@@ -57,7 +57,7 @@ _To make your own database in MySql shell:_
 
 
 | Behavior | Input | Output |
-| ------------- |:-------------:| -----:|
+| ------------- |:-------------:| :-----:|
 | No user interactability Required | Effort | Knowledge |
 
 ## Specs - "New Game" - Games/New.cshtml
@@ -67,7 +67,9 @@ _To make your own database in MySql shell:_
 </p>
 
 | Behavior | Input | Output |
-| ------------- |:-------------:| -----:|
+| ------------- |:-------------:| :-----:|
+| Input new lobby group name and password and personal player information |lobby name: -u Epicodus -p isgreat Player info: ... -CodeName Agent 007| New Game Lobby: Epicodus with one agent, Agent 007 as Admin |
+
 
 ## Specs - "Sign Up" - Players/New.cshtml
 
@@ -76,10 +78,9 @@ _To make your own database in MySql shell:_
 </p>
 
 | Behavior | Input | Output |
-| ------------- |:-------------:| -----:|
-| Input new lobby group name and password and personal player information |lobby name -u Epicodus -p isgreat ...| |
-| | | |
-| | | |
+| ------------- |:-------------:| :-----:|
+| Prompts user for game lobby name and password| -u Epicodus -p isgreat | Shows signup page |
+| Allows player to create new agent for that specific game instance | Name: Oliver K. Email: Olly@DoA.com Password: pa55w0rd ... Code Name: Bobbers | Creates new Agent Bobbers in Epicodus game |
 
 ## Specs - "Login" - Login.cshtml
 
@@ -96,6 +97,7 @@ _To make your own database in MySql shell:_
 * IsGameOver() with one player will never evaluated to true and end the game. There must always be (n > 1) players.
 * Using numbers as agent names confuses some of the Model references and will create infinite contract generation loops, resulting in an unwinnable game
 * End game accolades ignore ties for kill-count awards and will grab the first instance without a tiebreaker or split
+* Lots of missing authentication checks for form inputs throughout
 
 
 ## Support and contact details
