@@ -66,6 +66,7 @@ namespace Assassin.Models
             return mostSpoonKills;
         }
 
+
         public Player MostSockKills()
         {
             var db = new AssassinContext();
@@ -74,6 +75,40 @@ namespace Assassin.Models
         }
 
         public List<Player> DailyStats()
+        {
+          var db = new AssassinContext();
+          DateTime today = DateTime.Today;
+          List<Contract> contractsToday = db.contracts.Where(c => c.is_fulfilled == 1 && c.contract_end.Date == today && c.game_id == this.id).ToList();
+          List<Player> playerDeathsToday = new List<Player> {};
+          foreach(Contract contract in contractsToday)
+          {
+            Player targetPlayer = db.players.Where( p => p.assassin_id == contract.target_id && p.game_id == this.id).FirstOrDefault();
+            playerDeathsToday.Add(targetPlayer);
+          }
+          return playerDeathsToday;
+        }
+
+//THE CODE BELOW IS FOR END-OF-GAME STATS AND DOES NOT WORK
+   /* public void AssignDeathDay()
+    {
+      Console.WriteLine("!!!!!!!!!| TEEEEEESSSSSSSTTTTTTT");
+      var db = new AssassinContext();
+      long ticksPerDay = 864000000000;
+      Contract firstContract = db.contracts.Where(c => c.game_id == this.id).First();
+      DateTime gameStart = firstContract.contract_start;
+      Contract lastContract = db.contracts.Where(c => c.game_id == this.id && c.is_fulfilled == 1) .Last();
+      DateTime gameEnd = lastContract.contract_end;
+      long gameEndTicks = gameEnd.Ticks;
+      Console.WriteLine("!!!!!!!!!| gameEndTicks: " + gameEndTicks.ToString());
+      long gameStartTicks = gameStart.Ticks;
+      long gameSpanTicks = (gameEndTicks - gameStartTicks);
+      DateTime currentDate = new DateTime(gameStartTicks);
+      int deathDay = 1;
+      for (long i = gameStartTicks; i < gameEndTicks; i+= ticksPerDay)
+      {
+        List<Contract> contractList = db.contracts.Where(c => c.contract_end == currentDate).ToList();
+        foreach (Contract contract in contractList)
+
         {
             var db = new AssassinContext();
             DateTime today = DateTime.Today;
@@ -85,9 +120,9 @@ namespace Assassin.Models
                 playerDeathsToday.Add(targetPlayer);
             }
             return playerDeathsToday;
-        }
+        }*/
 
-        //THE CODE BELOW IS FOR END-OF-GAME STATS AND DOES NOT WORK
+//THE CODE BELOW IS FOR END-OF-GAME STATS AND DOES NOT WORK
         /*public void AssignDeathDay()
         {
             var db = new AssassinContext();
