@@ -7,10 +7,29 @@
   <link href="https://fonts.googleapis.com/css?family=Cantata+One|Fontdiner+Swanky|Limelight|Taviraj&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="~/css/styles.css">
 </head>
-
-<body class="container">
-
-      <h3 id="title" class="title rulesMain">Rules of the Game</h3>
+<header>
+ <!-- //Navbar start ------->
+      <nav class="navbar navbar-expand-md" id="indexNav">
+        <img src="~/favicon.ico" width="40" height="40" alt="A png of a knife" href="/">Assassin
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNav">
+          <ul class="navbar-nav">
+              <li class="nav-item">
+                  <a href="/">Home</a>
+              </li>
+            <li class="nav-item">
+            <a href="/rules">Rules of the Game</a>
+            </li>
+          </ul>
+        </div>
+      </nav>
+  <!-- //Navbar end ------->
+ </header>
+<body>
+    <div class="container">
+      <h3 id="title" class="title rulesMain">Consent</h3>
 
       <div class="rulesBox">
         <h5 class="rulesTitles">THE GOAL</h5>
@@ -76,9 +95,13 @@
           <li>This is a fun, sneaky way to make your assassin dreams come true!</li>
         </ul>
       </div>
-    <form action="/game/@Model["game"].id/player/@Model["player"].id" id="consent-form" method="get">
-      <input type="checkbox" required>I agree to follow the rules of the game.</input><br>
-      <button type="submit" class=" btn btn-dark">Accept</button>
-    </form>
+        <form action="/game/@Model["game"].id/player/@Model["player"].id" id="consent-form" method="get">
+          <input type="checkbox" required>I agree to follow the rules of the game.</input><br>
+          <button type="submit" class=" btn btn-dark">Accept</button>
+        </form>
+    </div>
+    <br>
+    <br>
+    <br>
   </body>
-  </html>
+</html>

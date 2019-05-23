@@ -27,13 +27,6 @@ namespace Assassin.Models
       selectedContract.weapon = weapon;
       selectedContract.contract_end = DateTime.Now;
       selectedContract.is_fulfilled = 1;
-
-      //
-      // DayStat newDaystat = new DayStat{ contract_id = selectedContract.id, assassin_id = selectedContract.assassin_id, target_id = selectedContract.target_id, date = selectedContract.contract_end};
-      // db.daily_statistics.Add(newDaystat);
-      //
-
-
       var selectedPlayer = db.players.Find(playerId);
       if (weapon == "sock")
       {
@@ -54,7 +47,7 @@ namespace Assassin.Models
       {
         selectedGame.is_end = 1;
         selectedGame.is_start = 0;
-        selectedGame.AssignDeathDay();
+        // selectedGame.AssignDeathDay();
       }
       db.SaveChanges();
       return selectedGame.is_end;
@@ -73,7 +66,8 @@ namespace Assassin.Models
       nowDeadPlayer.is_alive = 0;
       if (IsGameOver(newGameId, newAssassin, newTarget) != 1)
       {
-        Contract newContract = new Contract {game_id = newGameId, assassin_id = newAssassin, target_id = newTarget, contract_start = DateTime.Today, is_fulfilled = 0};
+          DateTime nullDateTime = new DateTime(1,1,1,0,0,0);
+        Contract newContract = new Contract {game_id = newGameId, assassin_id = newAssassin, target_id = newTarget, contract_start = DateTime.Today, contract_end = nullDateTime, is_fulfilled = 0};
         db.contracts.Add(newContract);
       }
 

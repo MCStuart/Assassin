@@ -2,20 +2,34 @@
 <html class="splash">
   <head>
     <title>Assassin</title>
-    <link rel='stylesheet' href='https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css'>
+    <link rel='stylesheet' href='~/css/bootstrap.css'>
     <link href="https://fonts.googleapis.com/css?family=Cantata+One|Fontdiner+Swanky|Limelight|Taviraj&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="~/css/styles.css">
   </head>
+ <header>
+  <!-- //Navbar start ------->
+       <nav class="navbar navbar-expand-md" id="indexNav">
+         <img src="~/favicon.ico" width="40" height="40" alt="A png of a knife" href="/">Assassin
+         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+         <span class="navbar-toggler-icon"></span>
+         </button>
+         <div class="collapse navbar-collapse" id="navbarNav">
+           <ul class="navbar-nav">
+             <li class="nav-item">
+             <a class="nav-link" href="/player/sign-up">Sign Up</a>
+             </li>
+             <li class="nav-item">
+               <a class="nav-link" href="/login">Login</a>
+             </li>
+             <li class="nav-item">
+             <a href="/rules">Rules of the Game</a>
+             </li>
+           </ul>
+         </div>
+       </nav>
+   <!-- //Navbar end ------->
+  </header>
   <body>
-
-
-    <ul class="navbar">
-      <li><a href="/player/sign-up">Sign up</a></li>
-      <li><a href="/login">Login</a></li>
-    </ul>
-    <ul class="navbar2"
-      <li><a href="/rules">Rules of the Game</a></li>
-    </ul>
       <div id="splash-text">
         <h4 id="play">.</h4>
         <p id="tagline">Kill your friends!</p>

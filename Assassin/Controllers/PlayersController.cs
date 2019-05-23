@@ -38,7 +38,7 @@ namespace Assassin.Controllers
       public IActionResult CreatePlayer(string name, string email, string password, string phoneNumber, string agentName, int gameId)
       {
         var db = new AssassinContext();
-        var player = new Player {is_alive = 1, name = name, password = password, email = email, code_name = agentName, game_id = gameId, phone_number = phoneNumber};
+        var player = new Player {is_alive = 1, name = name, password = password, email = email, code_name = agentName, game_id = gameId, spoon_score = 0, sock_score = 0, phone_number = phoneNumber, is_admin = 0};
         var foundGame = db.games.Find(gameId);
         db.players.Add(player);
         db.SaveChanges();
@@ -74,9 +74,7 @@ namespace Assassin.Controllers
           Game thisGame = db.games.Find(gameId);
           Player.AssignAssassinId(gameId);
           thisGame.BeginGame();
-          // db.SaveChanges();
           Player thisPlayer = db.players.Find(id);
-          // Dictionary<string, object> model = new Dictionary<string,object>{{"game", thisGame}, {"player", thisPlayer}};
           return RedirectToAction("Index", new {gameId = thisGame.id, id = thisPlayer.id});
       }
 

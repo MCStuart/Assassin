@@ -9,7 +9,6 @@ namespace Assassin.Models
     public DbSet<Game> games { get; set; }
     public DbSet<Player> players { get; set; }
     public DbSet<Contract> contracts { get; set; }
-    // public DbSet<DayStats> daily_statistics { get; set;}
 
     protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
     {

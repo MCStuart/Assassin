@@ -22,8 +22,6 @@ namespace Assassin.Models
     public string image_url { get; set; }
     public int is_admin { get; set; }
 
-    // public List<string> obit_mad_lib {}
-
     public static List<Player> GetAll(int gameId)
     {
       var db = new AssassinContext();
@@ -33,7 +31,6 @@ namespace Assassin.Models
 
     public static void AssignAssassinId(int gameId)
     {
-      // int playerCount = Player.GetAll(gameId).Count;
       Random random = new Random();
       var db = new AssassinContext();
       List<Player> playerList = db.players.Where(p => p.game_id == gameId).ToList();
