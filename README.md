@@ -90,6 +90,7 @@ _To make your own database in MySql shell:_
 
 | Behavior | Input | Output |
 | ------------- |:-------------:| -----:|
+| Input email and password to enter agent player portal | Email: Olly@DoA.com Password: pa55w0rd | returns Agent Bobber's player view |
 
 ## Known Bugs
 
