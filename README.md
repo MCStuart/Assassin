@@ -77,6 +77,9 @@ _To make your own database in MySql shell:_
 
 | Behavior | Input | Output |
 | ------------- |:-------------:| -----:|
+| Input new lobby group name and password and personal player information |lobby name -u Epicodus -p isgreat ...| |
+| | | |
+| | | |
 
 ## Specs - "Login" - Login.cshtml
 
