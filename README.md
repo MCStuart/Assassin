@@ -43,9 +43,11 @@ _To make your own database in MySql shell:_
 </p>
 
 | Behavior | Input | Output |
-| ------------- |:-------------:| -----:|
-
-
+| ------------- |:-------------:| :-----:|
+| Create a new game | Click "Start a new game" | redirected to new game instance create page |
+| Create an account to play a game of assassin | Click "Sign Up" | redirected to join game view with game lobby authentication |
+| Login to view your account details | Click "Login" | redirected to account authentication page |
+| Review rules of the game | Click "Rules of the Game" | Taken to Rules page |
 
 ## Specs - "Rules" - Rules.cshtml
 
