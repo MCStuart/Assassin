@@ -86,22 +86,10 @@ namespace Assassin.Models
       return playerDeathsToday;
     }
 
-    // public Dictionary<string, object> GameReview()
-    // {
-    //   var db = new AssassinContext();
-    //   DateTime gameStart = db.contracts.Where(c => c.contract_start).First();
-    //   List<Contract> contractsToday = db.contracts.Where(c => c.is_fulfilled == 1 && c.contract_end.Date == today && c.game_id == this.id).ToList();
-    //   List<Player> playerDeathsToday = new List<Player> {};
-    //   foreach(Contract contract in contractsToday)
-    //   {
-    //     Player targetPlayer = db.players.Where( p => p.assassin_id == contract.target_id && p.game_id == this.id).FirstOrDefault();
-    //     playerDeathsToday.Add(targetPlayer);
-    //   }
-    //   return playerDeathsToday;
-    // }
 
     public void AssignDeathDay()
     {
+      Console.WriteLine("!!!!!!!!!| TEEEEEESSSSSSSTTTTTTT");
       var db = new AssassinContext();
       long ticksPerDay = 864000000000;
       Contract firstContract = db.contracts.Where(c => c.game_id == this.id).First();
@@ -109,6 +97,7 @@ namespace Assassin.Models
       Contract lastContract = db.contracts.Where(c => c.game_id == this.id && c.is_fulfilled == 1) .Last();
       DateTime gameEnd = lastContract.contract_end;
       long gameEndTicks = gameEnd.Ticks;
+      Console.WriteLine("!!!!!!!!!| gameEndTicks: " + gameEndTicks.ToString());
       long gameStartTicks = gameStart.Ticks;
       long gameSpanTicks = (gameEndTicks - gameStartTicks);
       DateTime currentDate = new DateTime(gameStartTicks);
@@ -125,6 +114,21 @@ namespace Assassin.Models
         currentDate = new DateTime(currentDateTicks);
         deathDay++;
       }
+      db.SaveChanges();
+
+      // public Dictionary<string, object> GameReview()
+      // {
+      //   var db = new AssassinContext();
+      //   DateTime gameStart = db.contracts.Where(c => c.contract_start).First();
+      //   List<Contract> contractsToday = db.contracts.Where(c => c.is_fulfilled == 1 && c.contract_end.Date == today && c.game_id == this.id).ToList();
+      //   List<Player> playerDeathsToday = new List<Player> {};
+      //   foreach(Contract contract in contractsToday)
+      //   {
+      //     Player targetPlayer = db.players.Where( p => p.assassin_id == contract.target_id && p.game_id == this.id).FirstOrDefault();
+      //     playerDeathsToday.Add(targetPlayer);
+      //   }
+      //   return playerDeathsToday;
+      // }
     }
   }
 }

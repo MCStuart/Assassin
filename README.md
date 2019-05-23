@@ -39,17 +39,18 @@ _To make your own database in MySql shell:_
 ## Specs - "Landing Page" - Index.cshtml
 
 <p  align="center">
-  <img src="~/img/homePage.png" alt="image of homepage" height="80%" width="80%">
+  ![SplashPage](Assassin/wwwroot/img/splash-screenshot.jpg?raw=true)
 </p>
 
 | Behavior | Input | Output |
 | ------------- |:-------------:| -----:|
 
 
+
 ## Specs - "Rules" - Rules.cshtml
 
 <p  align="center">
-  <img src="~/img/aboutFAQpage.png" height="80%" width="80%">
+  ![SplashPage](Assassin/wwwroot/img/rules-screenshot.jpg?raw=true)
 </p>
 
 
@@ -59,7 +60,7 @@ _To make your own database in MySql shell:_
 ## Specs - "New Game" - Games/New.cshtml
 
 <p  align="center">
-  <img src="~/img/mapPage.png" height="80%" width="80%">
+  ![SplashPage](Assassin/wwwroot/img/newgame-screenshot.jpg?raw=true)
 </p>
 
 | Behavior | Input | Output |
@@ -68,7 +69,7 @@ _To make your own database in MySql shell:_
 ## Specs - "Sign Up" - Players/New.cshtml
 
 <p  align="center">
-  <img src="~/img/resourcesPage.png" height="80%" width="80%">
+  ![SplashPage](Assassin/wwwroot/img/signup-screenshot.jpg?raw=true)
 </p>
 
 | Behavior | Input | Output |
@@ -77,7 +78,7 @@ _To make your own database in MySql shell:_
 ## Specs - "Login" - Login.cshtml
 
 <p  align="center">
-  <img src="~/img/resourcesPage.png" height="80%" width="80%">
+  ![SplashPage](Assassin/wwwroot/img/login-screenshot.jpg?raw=true)
 </p>
 
 | Behavior | Input | Output |
@@ -85,18 +86,22 @@ _To make your own database in MySql shell:_
 
 ## Known Bugs
 
-_There are no known bugs, but this webpage is best viewed on a full screen._
+* URL security; any user can navigate through URLs into restricted views without any authentication given they know correct routing values
+* IsGameOver() with one player will never evaluated to true and end the game. There must always be (n > 1) players.
+* Using numbers as agent names confuses some of the Model references and will create infinite contract generation loops, resulting in an unwinnable game
+* End game accolades ignore ties for kill-count awards and will grab the first instance without a tiebreaker or split
+
 
 ## Support and contact details
 
-_Should any problems occur, or any bugs discovered, please contact Ashley Ancheta at ashleyjancheta@gmail.com_
+_Should any problems occur, or any bugs discovered, please contact Brooke Kullberg at brookezkullberg@gmail.com_
 
 ## Technologies Used
 
-_This program was written in HTML and JavaScript, using the JQuery library. It was styled with CSS, using Bootstrap as well as custom styling._
+_This program was written in C#/.Net with Entity Framework Core, using MVC and MySql.
 
 ### License
 
 *This software is licensed under MIT license.*
 
-Copyright (c) 2019 **_Brooke Kullberg, Megan Schulte, Ashley J. Ancheta, and Hannah Melendy_**
+Copyright (c) 2019 **_Brooke Kullberg, Reese Lee, Katlin Anderson, and Stuart McKay_**
