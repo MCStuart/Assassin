@@ -2,7 +2,7 @@
     ViewData["Title"] = "New Game";
 }
 <!DOCTYPE html>
-<html>
+<html class="signUp">
   <head>
     <meta charset='utf-8'>
     <title>Assassin</title>
@@ -13,25 +13,25 @@
 
 <body class="container">
 <div class="text-center">
-  <h1 id="title" class="display-4">Assassin - New Game</h1>
+  <h3 class="title" id="new-game-title">New Game</h3>
     <form action="/game/new" method="post" id="signUp">
       <h2>Choose a simple name and password for your group game. This information will be passed out in your invitations to your friends, and they will need it to sign up.</h2>
       <label for="gameName">Group name:</label>
-      <input name="gameName" type="text"></input>
+      <input name="gameName" type="text"></input><br>
       <label for="gamePassword">Group password:</label>
       <input name="gamePassword" type="password"></input>
-      <p>-----------------------------------------</p>
+      <hr>
       <h2>Now, fill in your personal player information!</h2>
       <label for="name">First name, last initial:</label>
-      <input name="name" type="text" value="ex: Dima E."></input>
-      <label for="email">email:</label>
-      <input name="email" type="text"></input>
+      <input name="name" type="text" placeholder="ex: Dima E."></input><br>
+      <label for="email">Email:</label>
+      <input name="email" type="text"></input><br>
       <label for="password">Password:</label>
-      <input name="password" type="password"></input>
+      <input name="password" type="password"></input><br>
       <label for="phoneNumber">Phone number:</label>
-      <input name="phoneNumber" type="text"></input>
-      <label for="agentName">Agent Name:</label>
-      <input name="agentName" type="text"></input>
+      <input name="phoneNumber" type="text"></input><br>
+      <label for="agentName">Code name:</label>
+      <input name="agentName" type="text"></input><br>
       <button type="submit" class="btn btn-dark">Submit</button>
     </form>
 </div>
