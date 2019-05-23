@@ -9,7 +9,7 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace Assassin.Migrations
 {
     [DbContext(typeof(AssassinContext))]
-    [Migration("20190522182410_InitialCreate")]
+    [Migration("20190522233453_InitialCreate")]
     partial class InitialCreate
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -28,6 +28,8 @@ namespace Assassin.Migrations
                     b.Property<DateTime>("contract_end");
 
                     b.Property<DateTime>("contract_start");
+
+                    b.Property<int>("death_day");
 
                     b.Property<int>("game_id");
 
@@ -50,8 +52,6 @@ namespace Assassin.Migrations
                     b.Property<int>("is_end");
 
                     b.Property<int>("is_start");
-
-                    b.Property<int>("latest_kill_id");
 
                     b.Property<string>("password");
 

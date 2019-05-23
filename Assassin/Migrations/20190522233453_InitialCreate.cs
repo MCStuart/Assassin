@@ -19,7 +19,8 @@ namespace Assassin.Migrations
                     contract_start = table.Column<DateTime>(nullable: false),
                     contract_end = table.Column<DateTime>(nullable: false),
                     is_fulfilled = table.Column<int>(nullable: false),
-                    weapon = table.Column<string>(nullable: true)
+                    weapon = table.Column<string>(nullable: true),
+                    death_day = table.Column<int>(nullable: false)
                 },
                 constraints: table =>
                 {
@@ -35,8 +36,7 @@ namespace Assassin.Migrations
                     team_name = table.Column<string>(nullable: true),
                     password = table.Column<string>(nullable: true),
                     is_start = table.Column<int>(nullable: false),
-                    is_end = table.Column<int>(nullable: false),
-                    latest_kill_id = table.Column<int>(nullable: false)
+                    is_end = table.Column<int>(nullable: false)
                 },
                 constraints: table =>
                 {
