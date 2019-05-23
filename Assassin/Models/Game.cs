@@ -22,7 +22,7 @@ namespace Assassin.Models
       List<Player> playerList = Player.GetAll(thisGame.id);
       foreach (Player player in playerList)
       {
-        Contract firstContract = new Contract {game_id = thisGame.id, assassin_id = player.assassin_id, target_id = (player.assassin_id + 1), contract_start = DateTime.Now, is_fulfilled = 0};
+        Contract firstContract = new Contract {game_id = thisGame.id, assassin_id = player.assassin_id, target_id = (player.assassin_id + 1), contract_start = DateTime.Today, is_fulfilled = 0};
         if (firstContract.target_id > playerList.Count)
         {
           firstContract.target_id = 1;
@@ -42,7 +42,8 @@ namespace Assassin.Models
     public Player FirstDead()
     {
       var db = new AssassinContext();
-      Contract firstCompletedContract = db.contracts.Where(c => c.contract_end != null && c.game_id == this.id).OrderBy(c => c.contract_end).First();
+      DateTime comparison = new DateTime(1, 1, 1, 0, 0, 0);
+      Contract firstCompletedContract = db.contracts.Where(c => c.contract_end != comparison && c.game_id == this.id).OrderBy(c => c.contract_end).First();
       int firstTarget = firstCompletedContract.target_id;
       Player firstDead = db.players.Where(p => p.assassin_id == firstTarget && p.game_id == this.id).FirstOrDefault();
       return firstDead;
@@ -88,7 +89,7 @@ namespace Assassin.Models
     // public Dictionary<string, object> GameReview()
     // {
     //   var db = new AssassinContext();
-    //
+    //   DateTime gameStart = db.contracts.Where(c => c.contract_start).First();
     //   List<Contract> contractsToday = db.contracts.Where(c => c.is_fulfilled == 1 && c.contract_end.Date == today && c.game_id == this.id).ToList();
     //   List<Player> playerDeathsToday = new List<Player> {};
     //   foreach(Contract contract in contractsToday)
@@ -98,5 +99,32 @@ namespace Assassin.Models
     //   }
     //   return playerDeathsToday;
     // }
+
+    public void AssignDeathDay()
+    {
+      var db = new AssassinContext();
+      long ticksPerDay = 864000000000;
+      Contract firstContract = db.contracts.Where(c => c.game_id == this.id).First();
+      DateTime gameStart = firstContract.contract_start;
+      Contract lastContract = db.contracts.Where(c => c.game_id == this.id && c.is_fulfilled == 1) .Last();
+      DateTime gameEnd = lastContract.contract_end;
+      long gameEndTicks = gameEnd.Ticks;
+      long gameStartTicks = gameStart.Ticks;
+      long gameSpanTicks = (gameEndTicks - gameStartTicks);
+      DateTime currentDate = new DateTime(gameStartTicks);
+      int deathDay = 1;
+      for (long i = gameStartTicks; i < gameEndTicks; i+= ticksPerDay)
+      {
+        List<Contract> contractList = db.contracts.Where(c => c.contract_end == currentDate).ToList();
+        foreach (Contract contract in contractList)
+        {
+          contract.death_day = deathDay;
+        }
+        long currentDateTicks = currentDate.Ticks;
+        currentDateTicks += ticksPerDay;
+        currentDate = new DateTime(currentDateTicks);
+        deathDay++;
+      }
+    }
   }
 }

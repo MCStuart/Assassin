@@ -16,8 +16,7 @@ namespace Assassin.Models
     public DateTime contract_end { get; set; }
     public int is_fulfilled { get; set; }
     public string weapon { get; set; }
-
-    // public int death_date_id {get; set;}
+    public int death_day {get; set;}
 
 
 
@@ -55,6 +54,7 @@ namespace Assassin.Models
       {
         selectedGame.is_end = 1;
         selectedGame.is_start = 0;
+        selectedGame.AssignDeathDay();
       }
       db.SaveChanges();
       return selectedGame.is_end;
@@ -73,9 +73,10 @@ namespace Assassin.Models
       nowDeadPlayer.is_alive = 0;
       if (IsGameOver(newGameId, newAssassin, newTarget) != 1)
       {
-        Contract newContract = new Contract {game_id = newGameId, assassin_id = newAssassin, target_id = newTarget, contract_start = DateTime.Now, is_fulfilled = 0};
+        Contract newContract = new Contract {game_id = newGameId, assassin_id = newAssassin, target_id = newTarget, contract_start = DateTime.Today, is_fulfilled = 0};
         db.contracts.Add(newContract);
       }
+
       db.SaveChanges();
     }
 
@@ -86,22 +87,6 @@ namespace Assassin.Models
       string targetPlayerName = targetPlayer.name;
       return targetPlayerName;
     }
-
-    /*public void SetDateId()
-    {
-      DateTime gameTimeStart = db.contracts.Where(c => c.contract_start).First();
-      DateTime gameTimeEnd = db.contracts.Where(c => c.contract_end).Last();
-      int daysElapsed =
-      List<Contracts> listOfFulfilledContracts = db.contracts.Where(c => c.is_fulfilled = 1).OrderBy(c => c.end_contract).ToList();
-      foreach(Contract contract in listOfFulfilledContracts)
-      {
-        if (contract.contract_end == gameStart)
-        {
-          contract.death_date_id = 1;
-        }
-
-      }
-    }*/
 
   }
 }

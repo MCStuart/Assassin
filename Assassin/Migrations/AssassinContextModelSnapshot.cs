@@ -27,6 +27,8 @@ namespace Assassin.Migrations
 
                     b.Property<DateTime>("contract_start");
 
+                    b.Property<int>("death_day");
+
                     b.Property<int>("game_id");
 
                     b.Property<int>("is_fulfilled");
@@ -48,8 +50,6 @@ namespace Assassin.Migrations
                     b.Property<int>("is_end");
 
                     b.Property<int>("is_start");
-
-                    b.Property<int>("latest_kill_id");
 
                     b.Property<string>("password");
 
