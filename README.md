@@ -52,7 +52,7 @@ _To make your own database in MySql shell:_
 ## Specs - "Rules" - Rules.cshtml
 
 <p  align="center">
-  ![SplashPage](Assassin/wwwroot/img/rules-screenshot.jpg?raw=true)
+  ![RulesPage](Assassin/wwwroot/img/rules-screenshot.jpg?raw=true)
 </p>
 
 
@@ -63,7 +63,7 @@ _To make your own database in MySql shell:_
 ## Specs - "New Game" - Games/New.cshtml
 
 <p  align="center">
-  ![SplashPage](Assassin/wwwroot/img/newgame-screenshot.jpg?raw=true)
+  ![NewGame](Assassin/wwwroot/img/newgame-screenshot.jpg?raw=true)
 </p>
 
 | Behavior | Input | Output |
@@ -74,7 +74,7 @@ _To make your own database in MySql shell:_
 ## Specs - "Sign Up" - Players/New.cshtml
 
 <p  align="center">
-  ![SplashPage](Assassin/wwwroot/img/signup-screenshot.jpg?raw=true)
+  ![NewPlayerSignUp](Assassin/wwwroot/img/signup-screenshot.jpg?raw=true)
 </p>
 
 | Behavior | Input | Output |
@@ -85,7 +85,7 @@ _To make your own database in MySql shell:_
 ## Specs - "Login" - Login.cshtml
 
 <p  align="center">
-  ![SplashPage](Assassin/wwwroot/img/login-screenshot.jpg?raw=true)
+  ![Login](Assassin/wwwroot/img/login-screenshot.jpg?raw=true)
 </p>
 
 | Behavior | Input | Output |
